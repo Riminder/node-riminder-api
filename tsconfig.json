@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "types": [],
+    "target": "ES6",
+    "rootDir": "./",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "temp/",
+  },
+  "exclude": [
+    "node_modules",
+    "dist/"
+  ]
+}
