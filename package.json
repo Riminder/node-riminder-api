@@ -2,7 +2,7 @@
   "name": "riminder-js-sdk",
   "version": "0.0.1",
   "description": "Vanilla Javascript wrapper SDK for Riminder.Net API",
-  "main": "dist/riminder-sdk.js",
+  "main": "./dist/riminder-sdk.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
