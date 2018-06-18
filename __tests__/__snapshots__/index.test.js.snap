@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`API Test It should call the get profile document endpoint with the profile id 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile document endpoint with the profile id 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -25,7 +25,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profile document endpoint with the profile reference 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile document endpoint with the profile reference 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -50,7 +50,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profile endpoint with the profile id 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile endpoint with the profile id 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -75,7 +75,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profile endpoint with the profile reference 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile endpoint with the profile reference 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -100,7 +100,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profile parsing endpoint with the profile id 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile parsing endpoint with the profile id 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -125,7 +125,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profile parsing endpoint with the profile reference 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profile parsing endpoint with the profile reference 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -150,7 +150,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get profiles endpoint 1`] = `
+exports[`Wrapper test Profile endpoints It should call the get profiles endpoint 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -175,7 +175,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get source endpoint 1`] = `
+exports[`Wrapper test Source endpoints It should call the get source endpoint 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -200,7 +200,7 @@ Object {
 }
 `;
 
-exports[`API Test It should call the get sources endpoint 1`] = `
+exports[`Wrapper test Source endpoints It should call the get sources endpoint 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
