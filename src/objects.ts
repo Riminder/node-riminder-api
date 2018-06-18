@@ -1,4 +1,4 @@
-import { create, getOne, getList, generateURLParams } from "./utils";
+import { generateURLParams } from "./utils";
 import defaults from "./defaults";
 import { httpRequest } from "./http";
 
