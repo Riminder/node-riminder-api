@@ -1,4 +1,4 @@
-import "whatwg-fetch";
+import "fetch-everywhere";
 import "./defaults";
 import defaults from "./defaults";
 import { Riminder } from "./index";
