@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API Test It should call the get profile document endpoint with the profile id 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/documents?source_id=source_id&profile_id=profile_id",
+    "path": "/sf/public/api/v1.0/profile/documents?source_id=source_id&profile_id=profile_id",
+    "pathname": "/sf/public/api/v1.0/profile/documents",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_id=profile_id",
+    "search": "?source_id=source_id&profile_id=profile_id",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profile document endpoint with the profile reference 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/documents?source_id=source_id&profile_reference=profile_reference",
+    "path": "/sf/public/api/v1.0/profile/documents?source_id=source_id&profile_reference=profile_reference",
+    "pathname": "/sf/public/api/v1.0/profile/documents",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_reference=profile_reference",
+    "search": "?source_id=source_id&profile_reference=profile_reference",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profile endpoint with the profile id 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile?source_id=source_id&profile_id=profile_id",
+    "path": "/sf/public/api/v1.0/profile?source_id=source_id&profile_id=profile_id",
+    "pathname": "/sf/public/api/v1.0/profile",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_id=profile_id",
+    "search": "?source_id=source_id&profile_id=profile_id",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profile endpoint with the profile reference 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile?source_id=source_id&profile_reference=profile_reference",
+    "path": "/sf/public/api/v1.0/profile?source_id=source_id&profile_reference=profile_reference",
+    "pathname": "/sf/public/api/v1.0/profile",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_reference=profile_reference",
+    "search": "?source_id=source_id&profile_reference=profile_reference",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profile parsing endpoint with the profile id 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/parsing?source_id=source_id&profile_id=profile_id",
+    "path": "/sf/public/api/v1.0/profile/parsing?source_id=source_id&profile_id=profile_id",
+    "pathname": "/sf/public/api/v1.0/profile/parsing",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_id=profile_id",
+    "search": "?source_id=source_id&profile_id=profile_id",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profile parsing endpoint with the profile reference 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/parsing?source_id=source_id&profile_reference=profile_reference",
+    "path": "/sf/public/api/v1.0/profile/parsing?source_id=source_id&profile_reference=profile_reference",
+    "pathname": "/sf/public/api/v1.0/profile/parsing",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_reference=profile_reference",
+    "search": "?source_id=source_id&profile_reference=profile_reference",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get profiles endpoint 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "path": "/sf/public/api/v1.0/profiles?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "pathname": "/sf/public/api/v1.0/profiles",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "search": "?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get source endpoint 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/source?source_id=id",
+    "path": "/sf/public/api/v1.0/source?source_id=id",
+    "pathname": "/sf/public/api/v1.0/source",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=id",
+    "search": "?source_id=id",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`API Test It should call the get sources endpoint 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/sources",
+    "path": "/sf/public/api/v1.0/sources",
+    "pathname": "/sf/public/api/v1.0/sources",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
