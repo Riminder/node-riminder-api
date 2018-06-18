@@ -9,7 +9,9 @@
   "author": "Souhail RAZZOUK <souhail.razzouk@hotmail.com>",
   "license": "ISC",
   "dependencies": {
-    "whatwg-fetch": "^2.0.4"
+    "babel-jest": "^23.0.1",
+    "fetch-everywhere": "^1.0.5",
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -19,6 +21,7 @@
     "gulp": "^3.9.1",
     "gulp-tslint": "^8.1.3",
     "gulp-typescript": "^4.0.2",
+    "jest": "^23.1.0",
     "merge2": "^1.2.2",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
