@@ -36,33 +36,34 @@ interface ProfileOptionReference {
 type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
 
 export default {
-  getSources: (options?: RiminderObjectsOptions) => {
-    return getList("sources", options);
+  getSources: () => {
+    return httpRequest(`${defaults.API_URL}/sources`);
   },
   getSource: (id: string) => {
-    return getOne("source", id);
+    return httpRequest(`${defaults.API_URL}/source?source_id=${id}`);
   },
-  getProfiles: (options?: RiminderObjectsOptions) => {
-    return getList("profiles", options);
+  getProfiles: (options: ProfilesOptions) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/profiles?${urlParams}`);
   },
-  getProfile: (id: string, sourceID: string) => {
-    let url = `${defaults.API_URL}/profile/${id}?source_id=${sourceID}`;
-    return httpRequest(url);
+  getProfile: (options: ProfileOptionIdOrReference) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/profile?${urlParams}`);
   },
   createResumeForProfile: (profileID: string, sourceID: string, file: File) => {
 
   },
-  getProfileDocuments: (id: string, sourceID: string) => {
-    let url = `${defaults.API_URL}/profile/${id}/documents?source_id=${sourceID}`;
-    return httpRequest(url);
+  getProfileDocuments: (options: ProfileOptionIdOrReference) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/profile/documents?${urlParams}`);
   },
-  getProfileExtractions: (id: string, sourceID: string) => {
-    let url = `${defaults.API_URL}/profile/${id}/extractions?source_id=${sourceID}`;
-    return httpRequest(url);
+  getProfileParsing: (options: ProfileOptionIdOrReference) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/profile/parsing?${urlParams}`);
   },
-  getProfileJobs: (id: string, sourceID: string) => {
-    let url = `${defaults.API_URL}/profile/${id}/jobs?source_id=${sourceID}`;
-    return httpRequest(url);
+  getProfileScoring: (options: ProfileOptionIdOrReference) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/profile/scoring?${urlParams}`);
   },
   updateProfileStage: (id: string, sourceID: string, jobID: string, stage: string) => {
     let url = `${defaults.API_URL}/profile/${id}/stage`;
