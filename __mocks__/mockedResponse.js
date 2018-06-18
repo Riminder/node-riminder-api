@@ -1,5 +1,3 @@
-const { sources } = require('./seeds');
-
 const handleRequest = (url, options) => {
   const response = {
     status: 200,
