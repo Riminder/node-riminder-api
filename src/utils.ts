@@ -1,4 +1,3 @@
-import "./defaults";
 import { httpRequest } from "./http";
 import defaults from "./defaults";
 
@@ -15,26 +14,11 @@ export const create = (object: string, data: any) => {
   return httpRequest(url, options);
 };
 
-export const getOne = (object: string, id: string) => {
-  let url = `${defaults.API_URL}/${object}/${id}`;
-  return httpRequest(url);
-};
-
-export const getList = (object: string, options: any) => {
-  let whereClause = options.where || {};
-  let page = options.page;
-  let itemsPerPage = options.itemsPerPage;
-  let urlParams = generateURLParams(whereClause, page, itemsPerPage);
-  let url = `${defaults.API_URL}/${object}${urlParams ? `?${urlParams}` : ""}`;
-  return httpRequest(url);
-};
-
-export const generateURLParams = (whereClause: any, page?: number, itemsPerPage?: number, sort?: string) => {
-  let keys = Object.keys(whereClause);
-  let URLParams = "";
-  for (let key of keys) {
-    URLParams = `${URLParams}&${key}=${whereClause[key]}`;
-  }
-  URLParams = `${URLParams}${page ? `&page=${page}` : ""}${itemsPerPage ? `&limit=${itemsPerPage}` : ""}${sort ? `&sort_by=${sort}` : ""}`;
-  return URLParams.slice(1);
+export const generateURLParams = (options: any) => {
+  return options ? Object.keys(options).map(key => {
+    if (options[key] instanceof Array) {
+      return `${key}=[${options[key]}]`;
+    }
+    return `${key}=${options[key]}`;
+  }).join("&") : null;
 };
