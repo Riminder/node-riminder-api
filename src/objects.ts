@@ -8,6 +8,33 @@ export interface RiminderObjectsOptions {
   itemsPerPage?: number;
 }
 
+interface ProfilesOptions {
+  source_ids: Array<string>;
+  date_start: Date;
+  date_end: Date;
+  page: number;
+  seniority?: string;
+  filter_id?: string;
+  filter_reference?: string;
+  stage?: string;
+  rating?: string;
+  limit?: number;
+  sort_by?: string;
+  order_by?: string;
+}
+
+interface ProfileOptionId {
+  source_id: string;
+  profile_id: string;
+}
+
+interface ProfileOptionReference {
+  source_id: string;
+  profile_reference: string;
+}
+
+type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
+
 export default {
   getSources: (options?: RiminderObjectsOptions) => {
     return getList("sources", options);
