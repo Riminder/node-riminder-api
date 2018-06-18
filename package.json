@@ -4,7 +4,7 @@
   "description": "Vanilla Javascript wrapper SDK for Riminder.Net API",
   "main": "./dist/riminder-sdk.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Souhail RAZZOUK <souhail.razzouk@hotmail.com>",
   "license": "ISC",
@@ -26,5 +26,8 @@
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "jest": {
+    "verbose": true
   }
 }
