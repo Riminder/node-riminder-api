@@ -6,7 +6,7 @@ const app = new riminder.Riminder({API_Key: 'api_key'});
 describe('Wrapper test', () => {
   describe('Source endpoints', () => {
     test('It should call the get sources endpoint', () =>
-    app.objects.getSources({}).then((response) => {
+    app.objects.getSources().then((response) => {
       expect(response).toMatchSnapshot();
     }));
   
@@ -14,6 +14,35 @@ describe('Wrapper test', () => {
       app.objects.getSource("id").then((response) => {
         expect(response).toMatchSnapshot();
       });
+    });
+  });
+
+  describe('Filter endpoints', () => {
+    test('It should call the get filters endpoint', () => {
+      app.objects.getFilters()
+        .then((response) => {
+          expect(response).toMatchSnapshot();
+        })
+    });
+
+    test('It sould call the get filter endpoint with the filter id', () => {
+      const options = {
+        filter_id: "filter_id"
+      };
+      app.objects.getFilter(options)
+        .then((response) => {
+          expect(response).toMatchSnapshot();
+        });
+    });
+
+    test('It sould call the get filter endpoint with the filter reference', () => {
+      const options = {
+        filter_reference: "filter_reference"
+      };
+      app.objects.getFilter(options)
+        .then((response) => {
+          expect(response).toMatchSnapshot();
+        });
     });
   });
 
