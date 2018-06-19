@@ -1,5 +1,3 @@
-import { httpRequest } from "./http";
-import { create, getOne, getList } from "./utils";
 import objects from "./objects";
 
 export interface RiminderOptions {
