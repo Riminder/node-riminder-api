@@ -32,8 +32,5 @@
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "jest": {
-    "verbose": true
   }
 }
