@@ -1,4 +1,5 @@
 const riminder = require('../temp/index');
+const fs = require('fs');
 
 const app = new riminder.Riminder({API_Key: 'api_key'});
 
@@ -98,5 +99,37 @@ describe('Wrapper test', () => {
         expect(response).toMatchSnapshot();
       });
     });
+
+    test('It should post a resume to the profile', () => {
+      const data = {
+        source_id: "source_id",
+        profile_reference: "ref",
+        training_metadata: [{
+          filter_id: "filter_id1",
+          stage: "stage",
+          stage_timestamp: "1234",
+          rating: 2,
+          rating_timestamp: "1234"
+        },{
+          filter_reference: "filter_reference",
+          stage: "stage",
+          stage_timestamp: "1234",
+          rating: 2,
+          rating_timestamp: "1234"
+        }],
+      };
+      const file = fs.createReadStream('/tmp/test.txt')
+      app.objects.createResumeForProfile(file, data)
+        .then((response) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+      });
+    })
   });
 });
