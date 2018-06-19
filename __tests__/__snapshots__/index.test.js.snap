@@ -175,6 +175,106 @@ Object {
 }
 `;
 
+exports[`Wrapper test Profile endpoints It should call the patch rating endpoint with the the profile id and filter id 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "PATCH",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/rating",
+    "path": "/sf/public/api/v1.0/profile/rating",
+    "pathname": "/sf/public/api/v1.0/profile/rating",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the patch rating endpoint with the the profile id and filter reference 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "PATCH",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/rating",
+    "path": "/sf/public/api/v1.0/profile/rating",
+    "pathname": "/sf/public/api/v1.0/profile/rating",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the patch rating endpoint with the the profile reference and filter id 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "PATCH",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/rating",
+    "path": "/sf/public/api/v1.0/profile/rating",
+    "pathname": "/sf/public/api/v1.0/profile/rating",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the patch rating endpoint with the the profile reference and filter reference 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "PATCH",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/rating",
+    "path": "/sf/public/api/v1.0/profile/rating",
+    "pathname": "/sf/public/api/v1.0/profile/rating",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
 exports[`Wrapper test Profile endpoints It should call the patch stage endpoint with the the profile id and filter id 1`] = `
 Object {
   "options": Object {
