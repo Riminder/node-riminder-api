@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Other tests "Riminder" object relative tests it should throw an error when no key is given 1`] = `"No API Key was supplied for Riminder SDK"`;
+
+exports[`Other tests "Riminder" object relative tests it should throw an error when you try to instanciate two instance of Riminder 1`] = `"You can not instanciate more than one instance of Riminder SDK"`;
+
 exports[`Wrapper test Filter endpoints It should call the get filters endpoint 1`] = `
 Object {
   "options": Object {
