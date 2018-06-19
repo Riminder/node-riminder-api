@@ -100,7 +100,7 @@ describe('Wrapper test', () => {
       });
     });
 
-    test('It should post a resume to the profile', () => {
+    test('It should call the post resume endpoint', () => {
       const data = {
         source_id: "source_id",
         profile_reference: "ref",
