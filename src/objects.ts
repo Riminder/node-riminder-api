@@ -3,7 +3,8 @@ import {
   ProfileOptionIdOrReference,
   ProfileUpload,
   StagePatch,
-  RatingPatch
+  RatingPatch,
+  FilterIdOrReference
   } from "./types";
 import { generateURLParams } from "./utils";
 import defaults from "./defaults";
@@ -24,6 +25,13 @@ export default {
   getProfile: (options: ProfileOptionIdOrReference) => {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`);
+  },
+  getFilters: () => {
+    return httpRequest(`${defaults.API_URL}/filters`);
+  },
+  getFilter: (options: FilterIdOrReference) => {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/filter?${urlParams}`);
   },
   createResumeForProfile: (data: ProfileUpload, file: ReadStream) => {
     const url = `${defaults.API_URL}/profile`;
