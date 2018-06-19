@@ -13,19 +13,19 @@ export interface ProfilesOptions {
   order_by?: string;
 }
 
-interface ProfileOptionId {
+export interface ProfileOptionId {
   source_id: string;
   profile_id: string;
 }
 
-interface ProfileOptionReference {
+export interface ProfileOptionReference {
   source_id: string;
   profile_reference: string;
 }
 
 export type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
 
-interface TrainingMetadataId {
+export interface TrainingMetadataId {
   filter_id: string;
   stage: string;
   stage_timestamp: Date;
@@ -33,7 +33,7 @@ interface TrainingMetadataId {
   rating_timestamp: Date;
 }
 
-interface TrainingMetadataReference {
+export interface TrainingMetadataReference {
   filter_reference: string;
   stage: string;
   stage_timestamp: Date;
@@ -48,28 +48,28 @@ export interface ProfileUpload {
   training_metadata: Array<TrainingMetadataId | TrainingMetadataReference>;
 }
 
-interface StagePatchProfileIdFilterId {
+export interface StagePatchProfileIdFilterId {
   source_id: string;
   profile_id: string;
   filter_id: string;
   stage: string | null;
 }
 
-interface StagePatchProfileIdFilterReference {
+export interface StagePatchProfileIdFilterReference {
   source_id: string;
   profile_id: string;
   filter_reference: string;
   stage: string | null;
 }
 
-interface StagePatchProfileReferenceFilterId {
+export interface StagePatchProfileReferenceFilterId {
   source_id: string;
   profile_reference: string;
   filter_id: string;
   stage: string | null;
 }
 
-interface StagePatchProfileReferenceFilterReference {
+export interface StagePatchProfileReferenceFilterReference {
   source_id: string;
   profile_reference: string;
   filter_reference: string;
@@ -82,28 +82,28 @@ export type StagePatch =
   StagePatchProfileReferenceFilterId |
   StagePatchProfileReferenceFilterReference;
 
-interface RatingPatchProfileIdFilterId {
+export interface RatingPatchProfileIdFilterId {
   source_id: string;
   profile_id: string;
   filter_id: string;
   rating: string | null;
 }
 
-interface RatingPatchProfileIdFilterReference {
+export interface RatingPatchProfileIdFilterReference {
   source_id: string;
   profile_id: string;
   filter_reference: string;
   rating: string | null;
 }
 
-interface RatingPatchProfileReferenceFilterId {
+export interface RatingPatchProfileReferenceFilterId {
   source_id: string;
   profile_reference: string;
   filter_id: string;
   rating: string | null;
 }
 
-interface RatingPatchProfileReferenceFilterReference {
+export interface RatingPatchProfileReferenceFilterReference {
   source_id: string;
   profile_reference: string;
   filter_reference: string;
@@ -115,3 +115,13 @@ export type RatingPatch =
   RatingPatchProfileIdFilterReference |
   RatingPatchProfileReferenceFilterId |
   RatingPatchProfileReferenceFilterReference;
+
+export interface FilterId {
+  filter_id: string;
+}
+
+export interface FilterReference {
+  filter_reference: string;
+}
+
+export type FilterIdOrReference = FilterId | FilterReference;
