@@ -175,6 +175,31 @@ Object {
 }
 `;
 
+exports[`Wrapper test Profile endpoints It should post a resume to the profile 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "POST",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile",
+    "path": "/sf/public/api/v1.0/profile",
+    "pathname": "/sf/public/api/v1.0/profile",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
 exports[`Wrapper test Source endpoints It should call the get source endpoint 1`] = `
 Object {
   "options": Object {
