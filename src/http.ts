@@ -1,8 +1,7 @@
 import "fetch-everywhere";
-import FormData from "form-data";
+const FormData = require("form-data");
 import defaults from "./defaults";
 import { Riminder } from "./index";
-import { ProfileUpload } from "./types";
 import { ReadStream } from "fs";
 
 declare interface RiminderAPIResponse {
@@ -27,27 +26,17 @@ export const httpRequest = (url: string, options?: any) => {
     .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPostRequest = (url: string, file: ReadStream, data: ProfileUpload) => {
+export const httpPostRequest = (url: string, data: any, file?: ReadStream) => {
   const headers = {
     "X-API-Key": Riminder._instance.API_Key || defaults.API_Key,
   };
 
-  let body = new FormData();
-  body.append("file", file as any);
-
-  Object.keys(data).forEach((key) => {
-    if ((data as any)[key] instanceof Array) {
-      (data as any)[key].forEach((obj: any) => {
-        body.append(key, JSON.stringify(obj));
-      });
-    } else {
-      body.append(key, (data as any)[key]);
-    }
-  });
+  const body = generateBody(data, file);
 
   const opts = {
     headers,
-    method: "POST"
+    method: "POST",
+    body,
   };
 
   return fetch(url, opts)
@@ -66,4 +55,24 @@ const errorHandler = (err: any) => {
   let error = new Error(err.message);
   (<any>error).response = err;
   throw error;
+};
+
+const generateBody = (data: any, file?: ReadStream) => {
+  const body = new FormData();
+
+  if (file) {
+    body.append("file", file as any);
+  }
+
+  Object.keys(data).forEach((key) => {
+    if ((data as any)[key] instanceof Array) {
+      (data as any)[key].forEach((obj: any) => {
+        body.append(key, JSON.stringify(obj));
+      });
+    } else {
+      body.append(key, (data as any)[key]);
+    }
+  });
+
+  return body;
 };

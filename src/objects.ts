@@ -23,9 +23,9 @@ export default {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`);
   },
-  createResumeForProfile: (file: ReadStream, data: ProfileUpload) => {
+  createResumeForProfile: (data: ProfileUpload, file: ReadStream) => {
     const url = `${defaults.API_URL}/profile`;
-    return httpPostRequest(url, file, data);
+    return httpPostRequest(url, data, file);
   },
   getProfileDocuments: (options: ProfileOptionIdOrReference) => {
     const urlParams = generateURLParams(options);
