@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "types": [],
+    "types": [
+      "node",
+    ],
     "target": "ES6",
     "rootDir": "./",
     "noImplicitAny": true,
