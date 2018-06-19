@@ -1,5 +1,6 @@
-import { Riminder, RiminderOptions } from "../src/index";
 import * as fs from "fs";
+import { generateURLParams } from "../src/utils";
+import { Riminder, RiminderOptions } from "../src/index";
 
 let app: Riminder;
 
@@ -22,6 +23,12 @@ describe("Other tests", () => {
       expect(() => {
         const app2 = new Riminder({ API_Key: "api_key2" });
       }).toThrowErrorMatchingSnapshot();
+    });
+  });
+
+  describe("utils module relative tests", () => {
+    test("This should return null if there is no input data", () => {
+      expect(generateURLParams(null)).toBeNull();
     });
   });
 });
