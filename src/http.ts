@@ -44,6 +44,24 @@ export const httpPostRequest = (url: string, data: any, file?: ReadStream) => {
     .then((json: RiminderAPIResponse) => json.data);
 };
 
+export const httpPatchRequest = (url: string, data: any) => {
+  const headers = {
+    "X-API-Key": Riminder._instance.API_Key || defaults.API_Key,
+  };
+
+  const body = generateBody(data);
+
+  const opts = {
+    headers,
+    method: "PATCH",
+    body,
+  };
+
+  return fetch(url, opts)
+    .then(successHandler, errorHandler)
+    .then((json: RiminderAPIResponse) => json.data);
+};
+
 const successHandler = (response: Response) => {
   if (response.status === 200 || response.status === 201) {
     return response.json();
