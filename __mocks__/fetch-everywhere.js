@@ -1,5 +1,5 @@
 const { parse } = require('url');
-const { handleRequest } = require('../__mocks__/mockedResponse');
+const { handleRequest } = require('./mockedResponse');
 
 const fetch = (url, opts) => {
   return new Promise((resolve, reject) => {
