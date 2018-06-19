@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": [
       "node",
+      "jest"
     ],
     "target": "ES6",
     "rootDir": "./",
@@ -13,7 +14,6 @@
     "outDir": "temp/",
   },
   "exclude": [
-    "node_modules",
     "dist/"
   ]
 }
