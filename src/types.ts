@@ -13,6 +13,12 @@ export interface ProfilesOptions {
   order_by?: string;
 }
 
+export interface RiminderAPIResponse {
+  code: number;
+  message: string;
+  data?: any;
+}
+
 export interface ProfileOptionId {
   source_id: string;
   profile_id: string;

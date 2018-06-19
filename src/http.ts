@@ -3,12 +3,8 @@ const FormData = require("form-data");
 import defaults from "./defaults";
 import { Riminder } from "./index";
 import { ReadStream } from "fs";
-
-declare interface RiminderAPIResponse {
-  code: number;
-  message: string;
-  data?: any;
-}
+import { RiminderAPIResponse } from "./types";
+import { APIError } from "./errors";
 
 export const httpRequest = (url: string, options?: any) => {
   let headers = {
@@ -66,7 +62,9 @@ const successHandler = (response: Response) => {
   if (response.status === 200 || response.status === 201) {
     return response.json();
   }
-  console.error(response);
+  response.json().then((data: RiminderAPIResponse) => {
+    throw new APIError("An error occured", data);
+  });
 };
 
 const errorHandler = (err: any) => {
