@@ -1,39 +1,12 @@
+import {
+  ProfilesOptions,
+  ProfileOptionIdOrReference,
+  ProfileUpload,
+  } from "./types";
 import { generateURLParams } from "./utils";
 import defaults from "./defaults";
-import { httpRequest } from "./http";
-
-export interface RiminderObjectsOptions {
-  where?: any;
-  page?: number;
-  itemsPerPage?: number;
-}
-
-interface ProfilesOptions {
-  source_ids: Array<string>;
-  date_start: Date;
-  date_end: Date;
-  page: number;
-  seniority?: string;
-  filter_id?: string;
-  filter_reference?: string;
-  stage?: string;
-  rating?: string;
-  limit?: number;
-  sort_by?: string;
-  order_by?: string;
-}
-
-interface ProfileOptionId {
-  source_id: string;
-  profile_id: string;
-}
-
-interface ProfileOptionReference {
-  source_id: string;
-  profile_reference: string;
-}
-
-type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
+import { httpRequest, httpPostRequest } from "./http";
+import { ReadStream } from "fs";
 
 export default {
   getSources: () => {
@@ -50,8 +23,9 @@ export default {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`);
   },
-  createResumeForProfile: (profileID: string, sourceID: string, file: File) => {
-
+  createResumeForProfile: (file: ReadStream, data: ProfileUpload) => {
+    const url = `${defaults.API_URL}/profile`;
+    return httpPostRequest(url, file, data);
   },
   getProfileDocuments: (options: ProfileOptionIdOrReference) => {
     const urlParams = generateURLParams(options);
