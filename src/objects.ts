@@ -2,7 +2,8 @@ import {
   ProfilesOptions,
   ProfileOptionIdOrReference,
   ProfileUpload,
-  StagePatch
+  StagePatch,
+  RatingPatch
   } from "./types";
 import { generateURLParams } from "./utils";
 import defaults from "./defaults";
@@ -44,14 +45,8 @@ export default {
     let url = `${defaults.API_URL}/profile/stage`;
     return httpPatchRequest(url, data);
   },
-  updateProfileRating: (id: string, sourceID: string, jobID: string, rating: number) => {
+  updateProfileRating: (data: RatingPatch) => {
     let url = `${defaults.API_URL}/profile/rating`;
-    let body = {
-      source_id: sourceID,
-      job_id: jobID,
-      rating: rating,
-    };
-
-    return httpRequest(url, { body });
+    return httpPatchRequest(url, data);
   }
 };
