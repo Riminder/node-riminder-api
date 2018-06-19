@@ -81,3 +81,37 @@ export type StagePatch =
   StagePatchProfileIdFilterReference |
   StagePatchProfileReferenceFilterId |
   StagePatchProfileReferenceFilterReference;
+
+interface RatingPatchProfileIdFilterId {
+  source_id: string;
+  profile_id: string;
+  filter_id: string;
+  rating: string | null;
+}
+
+interface RatingPatchProfileIdFilterReference {
+  source_id: string;
+  profile_id: string;
+  filter_reference: string;
+  rating: string | null;
+}
+
+interface RatingPatchProfileReferenceFilterId {
+  source_id: string;
+  profile_reference: string;
+  filter_id: string;
+  rating: string | null;
+}
+
+interface RatingPatchProfileReferenceFilterReference {
+  source_id: string;
+  profile_reference: string;
+  filter_reference: string;
+  rating: string | null;
+}
+
+export type RatingPatch =
+  RatingPatchProfileIdFilterId |
+  RatingPatchProfileIdFilterReference |
+  RatingPatchProfileReferenceFilterId |
+  RatingPatchProfileReferenceFilterReference;
