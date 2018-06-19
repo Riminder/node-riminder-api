@@ -119,7 +119,7 @@ describe('Wrapper test', () => {
         }],
       };
       const file = fs.createReadStream('/tmp/test.txt')
-      app.objects.createResumeForProfile(file, data)
+      app.objects.createResumeForProfile(data, file)
         .then((response) => {
           const responseWithoutBody = {
             url: response.url,
@@ -130,6 +130,86 @@ describe('Wrapper test', () => {
           };
           expect(responseWithoutBody).toMatchSnapshot();
       });
-    })
+    });
+
+    test('It should call the patch stage endpoint with the the profile id and filter id', () => {
+      const data = {
+        source_id: "source_id",
+        profile_id: "profile_id",
+        filter_id: "filter_id",
+        stage: "YES",
+      };
+      app.objects.updateProfileStage(data)
+        .then((response) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        })
+    });
+
+    test('It should call the patch stage endpoint with the the profile id and filter reference', () => {
+      const data = {
+        source_id: "source_id",
+        profile_id: "profile_id",
+        filter_reference: "filter_reference",
+        stage: "YES",
+      };
+      app.objects.updateProfileStage(data)
+        .then((response) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        })
+    });
+
+    test('It should call the patch stage endpoint with the the profile reference and filter id', () => {
+      const data = {
+        source_id: "source_id",
+        profile_reference: "profile_reference",
+        filter_id: "filter_id",
+        stage: "YES",
+      };
+      app.objects.updateProfileStage(data)
+        .then((response) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        })
+    });
+
+    test('It should call the patch stage endpoint with the the profile reference and filter reference', () => {
+      const data = {
+        source_id: "source_id",
+        profile_id: "profile_reference",
+        filter_id: "filter_reference",
+        stage: "YES",
+      };
+      app.objects.updateProfileStage(data)
+        .then((response) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        })
+    });
   });
 });
