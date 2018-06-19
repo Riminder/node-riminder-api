@@ -1,6 +1,6 @@
-const handleRequest = (url, options) => {
+export const handleRequest = (url, options, code) => {
   const response = {
-    status: 200,
+    status: code,
     data: {
       url,
       options,
@@ -9,7 +9,3 @@ const handleRequest = (url, options) => {
   }
   return Promise.resolve(response);
 }
-
-module.exports = {
-  handleRequest,
-};

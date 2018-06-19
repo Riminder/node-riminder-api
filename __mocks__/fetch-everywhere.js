@@ -1,10 +1,10 @@
-const { parse } = require('url');
-const { handleRequest } = require('./mockedResponse');
+import { parse } from "url";
+import { handleRequest } from "./mockedResponse";
 
 const fetch = (url, opts) => {
   return new Promise((resolve, reject) => {
     const parsedUrl = parse(url);
-    return resolve(handleRequest(parsedUrl, opts));
+    return resolve(handleRequest(parsedUrl, opts, opts.error ? 400 : 200));
   });
 };
 
