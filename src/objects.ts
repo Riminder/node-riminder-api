@@ -2,10 +2,11 @@ import {
   ProfilesOptions,
   ProfileOptionIdOrReference,
   ProfileUpload,
+  StagePatch
   } from "./types";
 import { generateURLParams } from "./utils";
 import defaults from "./defaults";
-import { httpRequest, httpPostRequest } from "./http";
+import { httpRequest, httpPostRequest, httpPatchRequest } from "./http";
 import { ReadStream } from "fs";
 
 export default {
@@ -39,18 +40,12 @@ export default {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile/scoring?${urlParams}`);
   },
-  updateProfileStage: (id: string, sourceID: string, jobID: string, stage: string) => {
-    let url = `${defaults.API_URL}/profile/${id}/stage`;
-    let body = {
-      source_id: sourceID,
-      job_id: jobID,
-      stage: stage,
-    };
-
-    return httpRequest(url, { body });
+  updateProfileStage: (data: StagePatch) => {
+    let url = `${defaults.API_URL}/profile/stage`;
+    return httpPatchRequest(url, data);
   },
   updateProfileRating: (id: string, sourceID: string, jobID: string, rating: number) => {
-    let url = `${defaults.API_URL}/profile/${id}/rating`;
+    let url = `${defaults.API_URL}/profile/rating`;
     let body = {
       source_id: sourceID,
       job_id: jobID,
