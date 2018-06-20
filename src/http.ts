@@ -32,12 +32,13 @@ export const httpPostRequest = (url: string, data: any, file?: ReadStream, optio
 };
 
 export const httpPatchRequest = (url: string, data: any, options?: any) => {
-  const body = generateBody(data);
+  Object.assign(options.headers, { "Content-type": "application/json" });
+  const body = JSON.stringify(data);
 
   const opts = {
     ...options,
     method: "PATCH",
-    body,
+    body
   };
 
   return fetch(url, opts)
