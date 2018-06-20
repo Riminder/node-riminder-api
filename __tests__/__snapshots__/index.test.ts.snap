@@ -4,6 +4,8 @@ exports[`Other tests "Riminder" object relative tests it should throw an error w
 
 exports[`Other tests http module relative tests It should throw an error if the error code is not 200 or 201 1`] = `[Error: An error occured]`;
 
+exports[`Other tests http module relative tests it should throw an error if something went wrong with the request 1`] = `[Error: Error message]`;
+
 exports[`Wrapper test Filter endpoints It should call the get filters endpoint 1`] = `
 Object {
   "options": Object {
