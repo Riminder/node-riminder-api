@@ -33,6 +33,13 @@ describe("Other tests", () => {
         expect(e).toMatchSnapshot();
       });
     });
+
+    test("it should throw an error if something went wrong with the request", () => {
+      expect.assertions(1);
+      return httpRequest("localhost", "api_key", { reject: true }).catch((e) => {
+        expect(e).toMatchSnapshot();
+      });
+    });
   });
 });
 
