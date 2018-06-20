@@ -219,7 +219,7 @@ describe("Wrapper test", () => {
         };
 
         const file = fs.createReadStream("./test.txt");
-        app.objects.createResumeForProfile(data, file)
+        app.objects.postResumeForProfile(data, file)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -239,7 +239,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.updateProfileStage(data)
+        app.objects.patchProfileStage(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -259,7 +259,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.updateProfileStage(data)
+        app.objects.patchProfileStage(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -279,7 +279,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.updateProfileStage(data)
+        app.objects.patchProfileStage(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -299,7 +299,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.updateProfileStage(data)
+        app.objects.patchProfileStage(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -319,7 +319,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.updateProfileRating(data)
+        app.objects.patchProfileRating(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -339,7 +339,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.updateProfileRating(data)
+        app.objects.patchProfileRating(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -359,7 +359,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.updateProfileRating(data)
+        app.objects.patchProfileRating(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -379,7 +379,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.updateProfileRating(data)
+        app.objects.patchProfileRating(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
