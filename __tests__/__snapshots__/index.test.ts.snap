@@ -294,13 +294,13 @@ Object {
     "hash": null,
     "host": "www.riminder.net",
     "hostname": "www.riminder.net",
-    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
-    "path": "/sf/public/api/v1.0/profiles?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "path": "/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
     "pathname": "/sf/public/api/v1.0/profiles",
     "port": null,
     "protocol": "https:",
-    "query": "source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
-    "search": "?source_ids=[source1,source2]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "query": "source_ids=[%22source1%22,%22source2%22]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
+    "search": "?source_ids=[%22source1%22,%22source2%22]&date_start=1234&date_end=1456&page=1&seniority=ALL&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=DESC&order_by=RECEPTION",
     "slashes": true,
   },
 }
@@ -310,6 +310,7 @@ exports[`Wrapper test Profile endpoints It should call the patch rating endpoint
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -335,6 +336,7 @@ exports[`Wrapper test Profile endpoints It should call the patch rating endpoint
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -360,6 +362,7 @@ exports[`Wrapper test Profile endpoints It should call the patch rating endpoint
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -385,6 +388,7 @@ exports[`Wrapper test Profile endpoints It should call the patch rating endpoint
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -410,6 +414,7 @@ exports[`Wrapper test Profile endpoints It should call the patch stage endpoint 
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -435,6 +440,7 @@ exports[`Wrapper test Profile endpoints It should call the patch stage endpoint 
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -460,6 +466,7 @@ exports[`Wrapper test Profile endpoints It should call the patch stage endpoint 
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
@@ -485,6 +492,7 @@ exports[`Wrapper test Profile endpoints It should call the patch stage endpoint 
 Object {
   "options": Object {
     "headers": Object {
+      "Content-type": "application/json",
       "X-API-Key": "api_key",
     },
     "method": "PATCH",
