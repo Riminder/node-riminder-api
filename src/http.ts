@@ -6,9 +6,9 @@ import { ReadStream } from "fs";
 import { RiminderAPIResponse } from "./types";
 import { APIError } from "./errors";
 
-export const httpRequest = (url: string, options?: any) => {
+export const httpRequest = (url: string, apiKey: string, options?: any) => {
   let headers = {
-    "X-API-Key": Riminder._instance.API_Key || defaults.API_Key,
+    "X-API-Key": apiKey,
   };
 
   let opts = {
@@ -22,9 +22,9 @@ export const httpRequest = (url: string, options?: any) => {
     .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPostRequest = (url: string, data: any, file?: ReadStream) => {
+export const httpPostRequest = (url: string, apiKey: string, data: any, file?: ReadStream) => {
   const headers = {
-    "X-API-Key": Riminder._instance.API_Key || defaults.API_Key,
+    "X-API-Key": apiKey,
   };
 
   const body = generateBody(data, file);
@@ -40,9 +40,9 @@ export const httpPostRequest = (url: string, data: any, file?: ReadStream) => {
     .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPatchRequest = (url: string, data: any) => {
+export const httpPatchRequest = (url: string, apiKey: string, data: any) => {
   const headers = {
-    "X-API-Key": Riminder._instance.API_Key || defaults.API_Key,
+    "X-API-Key": apiKey,
   };
 
   const body = generateBody(data);
@@ -62,7 +62,7 @@ const successHandler = (response: Response) => {
   if (response.status === 200 || response.status === 201) {
     return response.json();
   }
-  response.json().then((data: RiminderAPIResponse) => {
+  return response.json().then((data: RiminderAPIResponse) => {
     throw new APIError("An error occured", data);
   });
 };
