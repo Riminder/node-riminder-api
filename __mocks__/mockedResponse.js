@@ -5,7 +5,7 @@ export const handleRequest = (url, options, code) => {
       url,
       options,
     },
-    json: function() { return this; }
+    json: function() { return Promise.resolve(this); }
   }
   return Promise.resolve(response);
 }
