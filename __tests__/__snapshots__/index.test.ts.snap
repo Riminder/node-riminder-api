@@ -229,6 +229,56 @@ Object {
 }
 `;
 
+exports[`Wrapper test Profile endpoints It should call the get profile scoring endpoint with the profile id 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/scoring?source_id=source_id&profile_id=profile_id",
+    "path": "/sf/public/api/v1.0/profile/scoring?source_id=source_id&profile_id=profile_id",
+    "pathname": "/sf/public/api/v1.0/profile/scoring",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_id=profile_id",
+    "search": "?source_id=source_id&profile_id=profile_id",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the get profile scoring endpoint with the profile reference 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/scoring?source_id=source_id&profile_reference=profile_reference",
+    "path": "/sf/public/api/v1.0/profile/scoring?source_id=source_id&profile_reference=profile_reference",
+    "pathname": "/sf/public/api/v1.0/profile/scoring",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_id=source_id&profile_reference=profile_reference",
+    "search": "?source_id=source_id&profile_reference=profile_reference",
+    "slashes": true,
+  },
+}
+`;
+
 exports[`Wrapper test Profile endpoints It should call the get profiles endpoint 1`] = `
 Object {
   "options": Object {
