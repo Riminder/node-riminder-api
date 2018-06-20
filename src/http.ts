@@ -70,7 +70,7 @@ const successHandler = (response: Response) => {
 const errorHandler = (err: any) => {
   let error = new Error(err.message);
   (<any>error).response = err;
-  throw error;
+  return Promise.reject(error);
 };
 
 const generateBody = (data: any, file?: ReadStream) => {
