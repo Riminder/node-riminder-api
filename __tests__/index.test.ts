@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
-import { Riminder, RiminderOptions } from "../src/index";
+import { Riminder } from "../src/index";
+import { RiminderOptions } from "../src/types";
 
 let app: Riminder;
 
@@ -28,15 +29,22 @@ describe("Other tests", () => {
 
   describe("http module relative tests", () => {
     test("It should throw an error if the error code is not 200 or 201", () => {
+      const headers = {
+        "X-API-Key": "api_key",
+      };
+
       expect.assertions(1);
-      return httpRequest("localhost", "api_key", { error: true }).catch((e) => {
+      return httpRequest("localhost", { error: true, headers }).catch((e) => {
         expect(e).toMatchSnapshot();
       });
     });
 
     test("it should throw an error if something went wrong with the request", () => {
+      const headers = {
+        "X-API-Key": "api_key",
+      };
       expect.assertions(1);
-      return httpRequest("localhost", "api_key", { reject: true }).catch((e) => {
+      return httpRequest("localhost", { reject: true, headers }).catch((e) => {
         expect(e).toMatchSnapshot();
       });
     });
