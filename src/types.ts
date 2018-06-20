@@ -13,6 +13,11 @@ export interface ProfilesOptions {
   order_by?: string;
 }
 
+export interface RiminderOptions {
+  API_Key: string;
+  API_Secret?: string;
+}
+
 export interface RiminderAPIResponse {
   code: number;
   message: string;

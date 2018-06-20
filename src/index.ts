@@ -1,9 +1,5 @@
 import { Objects } from "./objects";
-
-export interface RiminderOptions {
-  API_Key: string;
-  API_Secret?: string;
-}
+import { RiminderOptions } from "./types";
 
 export class Riminder {
   public API_Key: string;
