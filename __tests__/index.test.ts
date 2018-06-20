@@ -17,14 +17,7 @@ describe("Other tests", () => {
         app = new Riminder({} as RiminderOptions);
       }).toThrowErrorMatchingSnapshot();
     });
-
-    test("it should throw an error when you try to instanciate two instance of Riminder", () => {
-      app = new Riminder({ API_Key: "api_key" });
-      expect(() => {
-        const app2 = new Riminder({ API_Key: "api_key2" });
-      }).toThrowErrorMatchingSnapshot();
     });
-  });
 
   describe("utils module relative tests", () => {
     test("This should return null if there is no input data", () => {
