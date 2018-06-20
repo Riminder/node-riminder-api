@@ -6,13 +6,8 @@ import { ReadStream } from "fs";
 import { RiminderAPIResponse } from "./types";
 import { APIError } from "./errors";
 
-export const httpRequest = (url: string, apiKey: string, options?: any) => {
-  let headers = {
-    "X-API-Key": apiKey,
-  };
-
+export const httpRequest = (url: string, options?: any) => {
   let opts = {
-    headers,
     credentials: "include",
     ...options
   };
@@ -22,15 +17,11 @@ export const httpRequest = (url: string, apiKey: string, options?: any) => {
     .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPostRequest = (url: string, apiKey: string, data: any, file?: ReadStream) => {
-  const headers = {
-    "X-API-Key": apiKey,
-  };
-
+export const httpPostRequest = (url: string, data: any, file?: ReadStream, options?: any) => {
   const body = generateBody(data, file);
 
   const opts = {
-    headers,
+    ...options,
     method: "POST",
     body,
   };
@@ -40,15 +31,11 @@ export const httpPostRequest = (url: string, apiKey: string, data: any, file?: R
     .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPatchRequest = (url: string, apiKey: string, data: any) => {
-  const headers = {
-    "X-API-Key": apiKey,
-  };
-
+export const httpPatchRequest = (url: string, data: any, options?: any) => {
   const body = generateBody(data);
 
   const opts = {
-    headers,
+    ...options,
     method: "PATCH",
     body,
   };
