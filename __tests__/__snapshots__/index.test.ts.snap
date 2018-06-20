@@ -2,7 +2,7 @@
 
 exports[`Other tests "Riminder" object relative tests it should throw an error when no key is given 1`] = `"No API Key was supplied for Riminder SDK"`;
 
-exports[`Other tests "Riminder" object relative tests it should throw an error when you try to instanciate two instance of Riminder 1`] = `"You can not instanciate more than one instance of Riminder SDK"`;
+exports[`Other tests http module relative tests It should throw an error if the error code is not 200 or 201 1`] = `[Error: An error occured]`;
 
 exports[`Wrapper test Filter endpoints It should call the get filters endpoint 1`] = `
 Object {
