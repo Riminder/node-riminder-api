@@ -1,4 +1,4 @@
-import objects from "./objects";
+import { Objects } from "./objects";
 
 export interface RiminderOptions {
   API_Key: string;
@@ -6,15 +6,10 @@ export interface RiminderOptions {
 }
 
 export class Riminder {
-  static _instance: Riminder;
   public API_Key: string;
   public objects: any;
   public webhooks: any;
   constructor(options: RiminderOptions) {
-    if (Riminder._instance) {
-      let error = new Error("You can not instanciate more than one instance of Riminder SDK");
-      throw error;
-    }
 
     if (!options.API_Key) {
       let error = new Error("No API Key was supplied for Riminder SDK");
@@ -23,11 +18,10 @@ export class Riminder {
 
     this.API_Key = options.API_Key;
     this._init();
-    Riminder._instance = this;
   }
 
   private _init() {
-    this.objects = objects;
+    this.objects = new Objects(this);
     this.webhooks = {};
   }
 
