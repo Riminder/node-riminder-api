@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
 import { Riminder } from "../src/index";
-import { RiminderOptions } from "../src/types";
+import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy } from "../src/types";
 
 let app: Riminder;
 
@@ -96,19 +96,19 @@ describe("Wrapper test", () => {
 
     describe("Profile endpoints", () => {
       test("It should call the get profiles endpoint", () => {
-        const options = {
+        const options: ProfilesOptions = {
           source_ids: ["source1", "source2"],
-          date_start: "1234",
-          date_end: "1456",
+          date_start: new Date(0),
+          date_end: new Date(Date.now()),
           page: 1,
-          seniority: "ALL",
+          seniority: Seniority.ALL,
           filter_id: "filter_id",
           filter_reference: "filter_reference",
-          stage: "YES",
-          rating: "1",
+          stage: Stage.YES,
+          rating: 1,
           limit: 30,
-          sort_by: "DESC",
-          order_by: "RECEPTION",
+          sort_by: SortBy.RECEPTION,
+          order_by: OrderBy.DESC,
         };
         app.objects.getProfiles(options)
           .then((response: any) => {
@@ -198,22 +198,23 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the post resume endpoint", () => {
-        const data = {
+        const data: ProfileUpload = {
           source_id: "source_id",
           profile_reference: "ref",
+          timestamp_reception: new Date(Date.now()),
           training_metadata: [{
             filter_id: "filter_id1",
             stage: "stage",
-            stage_timestamp: "1234",
+            stage_timestamp: new Date(Date.now()),
             rating: 2,
-            rating_timestamp: "1234"
+            rating_timestamp: new Date(Date.now())
           },
           {
             filter_reference: "filter_reference",
             stage: "stage",
-            stage_timestamp: "1234",
+            stage_timestamp: new Date(Date.now()),
             rating: 2,
-            rating_timestamp: "1234"
+            rating_timestamp: new Date(Date.now())
           }],
         };
 
@@ -232,11 +233,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch stage endpoint with the the profile id and filter id", () => {
-        const data = {
+        const data: StagePatch = {
           source_id: "source_id",
           profile_id: "profile_id",
           filter_id: "filter_id",
-          stage: "YES",
+          stage: Stage.YES,
         };
         app.objects.updateProfileStage(data)
           .then((response: any) => {
@@ -252,11 +253,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch stage endpoint with the the profile id and filter reference", () => {
-        const data = {
+        const data: StagePatch = {
           source_id: "source_id",
           profile_id: "profile_id",
-          filter_reference: "filter_reference",
-          stage: "YES",
+          filter_id: "filter_id",
+          stage: Stage.YES,
         };
         app.objects.updateProfileStage(data)
           .then((response: any) => {
@@ -272,11 +273,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch stage endpoint with the the profile reference and filter id", () => {
-        const data = {
+        const data: StagePatch = {
           source_id: "source_id",
-          profile_reference: "profile_reference",
+          profile_id: "profile_id",
           filter_id: "filter_id",
-          stage: "YES",
+          stage: Stage.YES,
         };
         app.objects.updateProfileStage(data)
           .then((response: any) => {
@@ -292,11 +293,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch stage endpoint with the the profile reference and filter reference", () => {
-        const data = {
+        const data: StagePatch = {
           source_id: "source_id",
-          profile_id: "profile_reference",
-          filter_id: "filter_reference",
-          stage: "YES",
+          profile_id: "profile_id",
+          filter_id: "filter_id",
+          stage: Stage.YES,
         };
         app.objects.updateProfileStage(data)
           .then((response: any) => {
@@ -312,11 +313,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch rating endpoint with the the profile id and filter id", () => {
-        const data = {
+        const data: RatingPatch = {
           source_id: "source_id",
           profile_id: "profile_id",
           filter_id: "filter_id",
-          rating: "2"
+          rating: 2
         };
         app.objects.updateProfileRating(data)
           .then((response: any) => {
@@ -332,11 +333,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch rating endpoint with the the profile id and filter reference", () => {
-        const data = {
+        const data: RatingPatch = {
           source_id: "source_id",
           profile_id: "profile_id",
-          filter_reference: "filter_reference",
-          rating: "2"
+          filter_id: "filter_id",
+          rating: 2
         };
         app.objects.updateProfileRating(data)
           .then((response: any) => {
@@ -352,11 +353,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch rating endpoint with the the profile reference and filter id", () => {
-        const data = {
+        const data: RatingPatch = {
           source_id: "source_id",
-          profile_reference: "profile_reference",
+          profile_id: "profile_id",
           filter_id: "filter_id",
-          rating: "2"
+          rating: 2
         };
         app.objects.updateProfileRating(data)
           .then((response: any) => {
@@ -372,11 +373,11 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the patch rating endpoint with the the profile reference and filter reference", () => {
-        const data = {
+        const data: RatingPatch = {
           source_id: "source_id",
-          profile_id: "profile_reference",
-          filter_id: "filter_reference",
-          rating: "2"
+          profile_id: "profile_id",
+          filter_id: "filter_id",
+          rating: 2
         };
         app.objects.updateProfileRating(data)
           .then((response: any) => {

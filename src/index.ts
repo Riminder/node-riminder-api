@@ -3,7 +3,7 @@ import { RiminderOptions } from "./types";
 
 export class Riminder {
   public API_Key: string;
-  public objects: any;
+  public objects: Objects;
   public webhooks: any;
   constructor(options: RiminderOptions) {
 

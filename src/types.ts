@@ -1,16 +1,16 @@
 export interface ProfilesOptions {
   source_ids: Array<string>;
-  date_start: Date;
-  date_end: Date;
-  page: number;
-  seniority?: string;
+  date_start: Date | number;
+  date_end: Date | number;
+  page?: number;
+  seniority?: Seniority;
   filter_id?: string;
   filter_reference?: string;
-  stage?: string;
-  rating?: string;
+  stage?: Stage;
+  rating?: number;
   limit?: number;
-  sort_by?: string;
-  order_by?: string;
+  sort_by: SortBy;
+  order_by?: OrderBy;
 }
 
 export interface RiminderOptions {
@@ -36,55 +36,53 @@ export interface ProfileOptionReference {
 
 export type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
 
-export interface TrainingMetadataId {
-  filter_id: string;
+export interface TrainingMetadataBase {
   stage: string;
-  stage_timestamp: Date;
+  stage_timestamp: Date | number;
   rating: number;
-  rating_timestamp: Date;
+  rating_timestamp: Date | number;
 }
 
-export interface TrainingMetadataReference {
-  filter_reference: string;
-  stage: string;
-  stage_timestamp: Date;
-  rating: number;
-  rating_timestamp: Date;
+export interface TrainingMetadataId extends TrainingMetadataBase {
+  filter_id: string;
 }
+
+export interface TrainingMetadataReference extends TrainingMetadataBase {
+  filter_reference: string;
+}
+
+export type TrainingMetadata = TrainingMetadataId | TrainingMetadataReference;
 
 export interface ProfileUpload {
   source_id: string;
   profile_reference: string;
-  timestamp_reception: Date;
-  training_metadata: Array<TrainingMetadataId | TrainingMetadataReference>;
+  timestamp_reception: Date | number;
+  training_metadata?: Array<TrainingMetadata>;
 }
 
-export interface StagePatchProfileIdFilterId {
+export interface StagePatchBase {
   source_id: string;
+  stage: Stage | null;
+}
+
+export interface StagePatchProfileIdFilterId extends StagePatchBase {
   profile_id: string;
   filter_id: string;
-  stage: string | null;
 }
 
-export interface StagePatchProfileIdFilterReference {
-  source_id: string;
+export interface StagePatchProfileIdFilterReference extends StagePatchBase {
   profile_id: string;
   filter_reference: string;
-  stage: string | null;
 }
 
-export interface StagePatchProfileReferenceFilterId {
-  source_id: string;
+export interface StagePatchProfileReferenceFilterId extends StagePatchBase {
   profile_reference: string;
   filter_id: string;
-  stage: string | null;
 }
 
-export interface StagePatchProfileReferenceFilterReference {
-  source_id: string;
+export interface StagePatchProfileReferenceFilterReference extends StagePatchBase {
   profile_reference: string;
   filter_reference: string;
-  stage: string | null;
 }
 
 export type StagePatch =
@@ -93,32 +91,29 @@ export type StagePatch =
   StagePatchProfileReferenceFilterId |
   StagePatchProfileReferenceFilterReference;
 
-export interface RatingPatchProfileIdFilterId {
+export interface RatingPatchBase {
   source_id: string;
+  rating: number | null;
+}
+
+export interface RatingPatchProfileIdFilterId extends RatingPatchBase {
   profile_id: string;
   filter_id: string;
-  rating: string | null;
 }
 
-export interface RatingPatchProfileIdFilterReference {
-  source_id: string;
+export interface RatingPatchProfileIdFilterReference extends RatingPatchBase {
   profile_id: string;
   filter_reference: string;
-  rating: string | null;
 }
 
-export interface RatingPatchProfileReferenceFilterId {
-  source_id: string;
+export interface RatingPatchProfileReferenceFilterId extends RatingPatchBase {
   profile_reference: string;
   filter_id: string;
-  rating: string | null;
 }
 
-export interface RatingPatchProfileReferenceFilterReference {
-  source_id: string;
+export interface RatingPatchProfileReferenceFilterReference extends RatingPatchBase {
   profile_reference: string;
   filter_reference: string;
-  rating: string | null;
 }
 
 export type RatingPatch =
@@ -136,3 +131,26 @@ export interface FilterReference {
 }
 
 export type FilterIdOrReference = FilterId | FilterReference;
+
+export enum Stage {
+  NEW = "NEW",
+  YES = "YES",
+  LATER = "LATER",
+  NO = "NO",
+}
+
+export enum SortBy {
+  RECEPTION = "reception",
+  RANKING = "ranking"
+}
+
+export enum OrderBy {
+  DESC = "desc",
+  ASC = "asc"
+}
+
+export enum Seniority {
+  ALL = "all",
+  SENIOR = "senior",
+  JUNIOR = "junior"
+}
