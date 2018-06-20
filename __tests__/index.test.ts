@@ -18,7 +18,7 @@ describe("Other tests", () => {
         app = new Riminder({} as RiminderOptions);
       }).toThrowErrorMatchingSnapshot();
     });
-    });
+  });
 
   describe("utils module relative tests", () => {
     test("This should return null if there is no input data", () => {
@@ -31,7 +31,7 @@ describe("Other tests", () => {
       expect.assertions(1);
       return httpRequest("localhost", "api_key", { error: true }).catch((e) => {
         expect(e).toMatchSnapshot();
-});
+      });
     });
   });
 });
@@ -158,6 +158,26 @@ describe("Wrapper test", () => {
           profile_reference: "profile_reference",
         };
         app.objects.getProfileParsing(options).then((response: any) => {
+          expect(response).toMatchSnapshot();
+        });
+      });
+
+      test("It should call the get profile scoring endpoint with the profile id", () => {
+        const options = {
+          source_id: "source_id",
+          profile_id: "profile_id",
+        };
+        app.objects.getProfileScoring(options).then((response: any) => {
+          expect(response).toMatchSnapshot();
+        });
+      });
+
+      test("It should call the get profile scoring endpoint with the profile reference", () => {
+        const options = {
+          source_id: "source_id",
+          profile_reference: "profile_reference",
+        };
+        app.objects.getProfileScoring(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
