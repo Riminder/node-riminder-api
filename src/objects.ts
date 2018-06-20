@@ -30,6 +30,15 @@ export class Objects {
     return httpRequest(`${defaults.API_URL}/source?source_id=${id}`, { headers: this.headers });
   }
 
+  getFilters() {
+    return httpRequest(`${defaults.API_URL}/filters`, { headers: this.headers });
+  }
+
+  getFilter(options: FilterIdOrReference) {
+    const urlParams = generateURLParams(options);
+    return httpRequest(`${defaults.API_URL}/filter?${urlParams}`, { headers: this.headers });
+  }
+
   getProfiles(options: ProfilesOptions) {
     if (options.date_end && typeof options.date_end === "object") {
       options.date_end = Math.floor(options.date_end.getTime() / 1000);
@@ -46,16 +55,7 @@ export class Objects {
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`, { headers: this.headers });
   }
 
-  getFilters() {
-    return httpRequest(`${defaults.API_URL}/filters`, { headers: this.headers });
-  }
-
-  getFilter(options: FilterIdOrReference) {
-    const urlParams = generateURLParams(options);
-    return httpRequest(`${defaults.API_URL}/filter?${urlParams}`, { headers: this.headers });
-  }
-
-  createResumeForProfile(data: ProfileUpload, file: ReadStream) {
+  postResumeForProfile(data: ProfileUpload, file: ReadStream) {
     if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
       data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
     }
@@ -88,12 +88,12 @@ export class Objects {
     return httpRequest(`${defaults.API_URL}/profile/scoring?${urlParams}`, { headers: this.headers });
   }
 
-  updateProfileStage(data: StagePatch) {
+  patchProfileStage(data: StagePatch) {
     let url = `${defaults.API_URL}/profile/stage`;
     return httpPatchRequest(url, data, { headers: this.headers });
   }
 
-  updateProfileRating(data: RatingPatch) {
+  patchProfileRating(data: RatingPatch) {
     let url = `${defaults.API_URL}/profile/rating`;
     return httpPatchRequest(url, data, { headers: this.headers });
   }
