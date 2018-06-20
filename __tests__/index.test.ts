@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
+import { httpRequest } from "../src/http";
 import { Riminder, RiminderOptions } from "../src/index";
 
 let app: Riminder;
@@ -24,9 +25,19 @@ describe("Other tests", () => {
       expect(generateURLParams(null)).toBeNull();
     });
   });
+
+  describe("http module relative tests", () => {
+    test("It should throw an error if the error code is not 200 or 201", () => {
+      expect.assertions(1);
+      return httpRequest("localhost", "api_key", { error: true }).catch((e) => {
+        expect(e).toMatchSnapshot();
+});
+    });
+  });
 });
 
 describe("Wrapper test", () => {
+    app = new Riminder({API_Key: "api_key"});
     describe("Source endpoints", () => {
         test("It should call the get sources endpoint", () =>
         app.objects.getSources().then((response: any) => {
