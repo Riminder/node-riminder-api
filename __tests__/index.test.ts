@@ -99,7 +99,7 @@ describe("Wrapper test", () => {
         const options: ProfilesOptions = {
           source_ids: ["source1", "source2"],
           date_start: new Date(0),
-          date_end: new Date(Date.now()),
+          date_end: new Date(1234),
           page: 1,
           seniority: Seniority.ALL,
           filter_id: "filter_id",
