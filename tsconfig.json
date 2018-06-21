@@ -8,10 +8,8 @@
     "sourceMap": true,
     "declaration": true,
     "outDir": "temp/",
+    "moduleResolution": "node"
   },
-  "include": [
-    "node_modules/**/*.d.ts"
-  ],
   "exclude": [
     "dist/"
   ]
