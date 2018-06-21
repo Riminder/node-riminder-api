@@ -1,9 +1,5 @@
 {
   "compilerOptions": {
-    "types": [
-      "node",
-      "jest"
-    ],
     "target": "ES6",
     "rootDir": "./",
     "noImplicitAny": true,
@@ -13,6 +9,9 @@
     "declaration": true,
     "outDir": "temp/",
   },
+  "include": [
+    "node_modules/**/*.d.ts"
+  ],
   "exclude": [
     "dist/"
   ]
