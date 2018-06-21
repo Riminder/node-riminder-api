@@ -1,7 +1,5 @@
 import "fetch-everywhere";
 const FormData = require("form-data");
-import defaults from "./defaults";
-import { Riminder } from "./index";
 import { ReadStream } from "fs";
 import { RiminderAPIResponse } from "./types";
 import { APIError } from "./errors";
