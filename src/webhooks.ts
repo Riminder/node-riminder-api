@@ -1,7 +1,6 @@
 import Events from "./events";
-import util from "tweetnacl-util";
+import * as util from "tweetnacl-util";
 import * as sha256 from "fast-sha256";
-import events from "./events";
 
 namespace Webhooks {
     export interface ResponseBase {
@@ -37,11 +36,13 @@ namespace Webhooks {
         filter_id: string;
         filter_reference: string;
     }
+
+    export type EventCallbackMap = Map<string, (data: Webhooks.Response) => any>;
 }
 
 export class Webhooks {
     webhookSecretKey: string;
-    binding: Array<(data: Webhooks.Response) => any>;
+    binding: Webhooks.EventCallbackMap;
 
     constructor(secretKey: string) {
         if (!secretKey) {
@@ -49,7 +50,7 @@ export class Webhooks {
         }
 
         this.webhookSecretKey = secretKey;
-        this.binding = [];
+        this.binding = new Map<string, (data: Webhooks.Response) => any>();
     }
 
     handleWebhook(headers: any): () => void {
@@ -68,7 +69,7 @@ export class Webhooks {
 
             const payload: Webhooks.Response = JSON.parse(util.encodeUTF8(util.decodeBase64(encodedPayload)));
 
-            if (!Events.includes(payload.type)) {
+            if (Events.indexOf(payload.type) > 0) {
                 throw new Error(`Unknown event: ${payload.type}`);
             }
             this._callBinding(payload);
@@ -76,22 +77,22 @@ export class Webhooks {
     }
 
     on(event: string, callback: (data: Webhooks.Response) => any) {
-        if (!events.includes(event)) {
+        if (Events.indexOf(event) > 0) {
             throw new Error("This event doesn't exist");
         }
 
-        if (this.binding[event]) {
+        if (!this.binding.has(event)) {
             throw new Error("This callback already has been declared");
         }
 
-        this.binding[event] = callback;
+        this.binding.set(event, callback);
 
         return this;
     }
 
     _callBinding(payload: Webhooks.Response): void {
-        if (this.binding[payload.type]) {
-            this.binding[payload.type](payload);
+        if (this.binding.has(payload.type)) {
+            this.binding.get(payload.type)(payload);
         }
     }
 }
