@@ -37,7 +37,7 @@ export interface ProfileOptionReference {
 export type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
 
 export interface TrainingMetadataBase {
-  stage: string;
+  stage: Stage;
   stage_timestamp: Date | number;
   rating: number;
   rating_timestamp: Date | number;
