@@ -4,13 +4,13 @@
 ## Install
 
 ```bash
-npm install --save riminder-js-sdk
+npm install --save node-riminder-api
 ```
 
 ## Usage
 
 ```typescript
-import { Riminder } from 'riminder-js-sdk';
+import Riminder from 'node-riminder-api';
 const app = new Riminder({API_Key: "Your API Key"});
 ```
 
@@ -29,7 +29,6 @@ Class constructor for your app instance, it should be called with an `options` o
 Method that gets a list of sources.
 
 ```typescript
-const app = new riminderSdk.Riminder({API_Key: "api-key-here"});
 app.sources.getList();
 ```
 
