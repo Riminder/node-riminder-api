@@ -1,9 +1,9 @@
-export const generateURLParams = (options) => {
-    return options ? Object.keys(options).map(key => {
+export var generateURLParams = function (options) {
+    return options ? Object.keys(options).map(function (key) {
         if (options[key] instanceof Array) {
-            return `${key}=[${options[key].map((elem) => `"${elem}"`).join(",")}]`;
+            return key + "=[" + options[key].map(function (elem) { return "\"" + elem + "\""; }).join(",") + "]";
         }
-        return `${key}=${options[key]}`;
+        return key + "=" + options[key];
     }).join("&") : null;
 };
 //# sourceMappingURL=utils.js.map

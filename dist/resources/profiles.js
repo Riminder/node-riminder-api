@@ -1,15 +1,15 @@
 import defaults from "../defaults";
 import { generateURLParams } from "../utils";
 import { httpPostRequest, httpRequest } from "../http";
-export default class Profiles {
-    constructor(riminder) {
+var Profiles = /** @class */ (function () {
+    function Profiles(riminder) {
         this.riminder = riminder;
     }
-    getOne(options) {
-        const urlParams = generateURLParams(options);
-        return httpRequest(`${defaults.API_URL}/profile?${urlParams}`, { headers: this.riminder.headers });
-    }
-    getList(options) {
+    Profiles.prototype.getOne = function (options) {
+        var urlParams = generateURLParams(options);
+        return httpRequest(defaults.API_URL + "/profile?" + urlParams, { headers: this.riminder.headers });
+    };
+    Profiles.prototype.getList = function (options) {
         if (options.date_end && typeof options.date_end === "object") {
             options.date_end = Math.floor(options.date_end.getTime() / 1000);
         }
@@ -22,10 +22,10 @@ export default class Profiles {
         else {
             options.date_start = Math.floor(options.date_start / 1000);
         }
-        const urlParams = generateURLParams(options);
-        return httpRequest(`${defaults.API_URL}/profiles?${urlParams}`, { headers: this.riminder.headers });
-    }
-    create(data, file) {
+        var urlParams = generateURLParams(options);
+        return httpRequest(defaults.API_URL + "/profiles?" + urlParams, { headers: this.riminder.headers });
+    };
+    Profiles.prototype.create = function (data, file) {
         if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
             data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
         }
@@ -33,7 +33,7 @@ export default class Profiles {
             data.timestamp_reception = Math.floor(data.timestamp_reception / 1000);
         }
         if (data.training_metadata) {
-            data.training_metadata.forEach((metadata) => {
+            data.training_metadata.forEach(function (metadata) {
                 if (typeof metadata.rating_timestamp === "object") {
                     metadata.rating_timestamp = Math.floor(metadata.rating_timestamp.getTime() / 1000);
                 }
@@ -48,8 +48,10 @@ export default class Profiles {
                 }
             });
         }
-        const url = `${defaults.API_URL}/profile`;
+        var url = defaults.API_URL + "/profile";
         return httpPostRequest(url, data, file, { headers: this.riminder.headers });
-    }
-}
+    };
+    return Profiles;
+}());
+export default Profiles;
 //# sourceMappingURL=profiles.js.map

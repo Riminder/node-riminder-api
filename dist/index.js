@@ -7,10 +7,10 @@ import ProfileParsing from "./resources/profileParsing";
 import ProfileScoring from "./resources/profileScoring";
 import ProfileRating from "./resources/profileRating";
 import ProfileStage from "./resources/profileStage";
-export default class Riminder {
-    constructor(options) {
+var Riminder = /** @class */ (function () {
+    function Riminder(options) {
         if (!options.API_Key) {
-            let error = new Error("No API Key was supplied for Riminder SDK");
+            var error = new Error("No API Key was supplied for Riminder SDK");
             throw error;
         }
         this.API_Key = options.API_Key;
@@ -22,7 +22,7 @@ export default class Riminder {
         }
         this._init();
     }
-    _init() {
+    Riminder.prototype._init = function () {
         if (this.Webhooks_Key) {
             this.webhooks = new Webhooks(this.Webhooks_Key);
         }
@@ -34,6 +34,8 @@ export default class Riminder {
         this.profileScoring = new ProfileScoring(this);
         this.profileRating = new ProfileRating(this);
         this.profileStage = new ProfileStage(this);
-    }
-}
+    };
+    return Riminder;
+}());
+export default Riminder;
 //# sourceMappingURL=index.js.map

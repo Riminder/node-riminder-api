@@ -1,48 +1,56 @@
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 import "fetch-everywhere";
-const FormData = require("form-data");
+var FormData = require("form-data");
 import { APIError } from "./errors";
-export const httpRequest = (url, options) => {
-    let opts = Object.assign({ credentials: "include" }, options);
+export var httpRequest = function (url, options) {
+    var opts = __assign({ credentials: "include" }, options);
     return fetch(url, opts)
         .then(successHandler, errorHandler)
-        .then((json) => json.data);
+        .then(function (json) { return json.data; });
 };
-export const httpPostRequest = (url, data, file, options) => {
-    const body = generateBody(data, file);
-    const opts = Object.assign({}, options, { method: "POST", body });
+export var httpPostRequest = function (url, data, file, options) {
+    var body = generateBody(data, file);
+    var opts = __assign({}, options, { method: "POST", body: body });
     return fetch(url, opts)
         .then(successHandler, errorHandler)
-        .then((json) => json.data);
+        .then(function (json) { return json.data; });
 };
-export const httpPatchRequest = (url, data, options) => {
+export var httpPatchRequest = function (url, data, options) {
     Object.assign(options.headers, { "Content-type": "application/json" });
-    const body = JSON.stringify(data);
-    const opts = Object.assign({}, options, { method: "PATCH", body });
+    var body = JSON.stringify(data);
+    var opts = __assign({}, options, { method: "PATCH", body: body });
     return fetch(url, opts)
         .then(successHandler, errorHandler)
-        .then((json) => json.data);
+        .then(function (json) { return json.data; });
 };
-const successHandler = (response) => {
+var successHandler = function (response) {
     if (response.status === 200 || response.status === 201) {
         return response.json();
     }
-    return response.json().then((data) => {
+    return response.json().then(function (data) {
         throw new APIError("An error occured", data);
     });
 };
-const errorHandler = (err) => {
-    let error = new Error(err.message);
+var errorHandler = function (err) {
+    var error = new Error(err.message);
     error.response = err;
     return Promise.reject(error);
 };
-const generateBody = (data, file) => {
-    const body = new FormData();
+var generateBody = function (data, file) {
+    var body = new FormData();
     if (file) {
         body.append("file", file);
     }
-    Object.keys(data).forEach((key) => {
+    Object.keys(data).forEach(function (key) {
         if (data[key] instanceof Array) {
-            data[key].forEach((obj) => {
+            data[key].forEach(function (obj) {
                 body.append(key, JSON.stringify(obj));
             });
         }

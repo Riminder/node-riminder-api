@@ -1,13 +1,15 @@
 import defaults from "../defaults";
 import { generateURLParams } from "../utils";
 import { httpRequest } from "../http";
-export default class ProfileDocuments {
-    constructor(riminder) {
+var ProfileDocuments = /** @class */ (function () {
+    function ProfileDocuments(riminder) {
         this.riminder = riminder;
     }
-    get(options) {
-        const urlParams = generateURLParams(options);
-        return httpRequest(`${defaults.API_URL}/profile/documents?${urlParams}`, { headers: this.riminder.headers });
-    }
-}
+    ProfileDocuments.prototype.get = function (options) {
+        var urlParams = generateURLParams(options);
+        return httpRequest(defaults.API_URL + "/profile/documents?" + urlParams, { headers: this.riminder.headers });
+    };
+    return ProfileDocuments;
+}());
+export default ProfileDocuments;
 //# sourceMappingURL=profileDocuments.js.map

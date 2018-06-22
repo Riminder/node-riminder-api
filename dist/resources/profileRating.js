@@ -1,12 +1,14 @@
 import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
-export default class ProfileRating {
-    constructor(riminder) {
+var ProfileRating = /** @class */ (function () {
+    function ProfileRating(riminder) {
         this.riminder = riminder;
     }
-    update(data) {
-        let url = `${defaults.API_URL}/profile/rating`;
+    ProfileRating.prototype.update = function (data) {
+        var url = defaults.API_URL + "/profile/rating";
         return httpPatchRequest(url, data, { headers: this.riminder.headers });
-    }
-}
+    };
+    return ProfileRating;
+}());
+export default ProfileRating;
 //# sourceMappingURL=profileRating.js.map

@@ -1,12 +1,14 @@
 import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
-export default class ProfileStage {
-    constructor(riminder) {
+var ProfileStage = /** @class */ (function () {
+    function ProfileStage(riminder) {
         this.riminder = riminder;
     }
-    update(data) {
-        let url = `${defaults.API_URL}/profile/stage`;
+    ProfileStage.prototype.update = function (data) {
+        var url = defaults.API_URL + "/profile/stage";
         return httpPatchRequest(url, data, { headers: this.riminder.headers });
-    }
-}
+    };
+    return ProfileStage;
+}());
+export default ProfileStage;
 //# sourceMappingURL=profileStage.js.map

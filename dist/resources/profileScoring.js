@@ -1,13 +1,15 @@
 import defaults from "../defaults";
 import { generateURLParams } from "../utils";
 import { httpRequest } from "../http";
-export default class ProfileScoring {
-    constructor(riminder) {
+var ProfileScoring = /** @class */ (function () {
+    function ProfileScoring(riminder) {
         this.riminder = riminder;
     }
-    get(options) {
-        const urlParams = generateURLParams(options);
-        return httpRequest(`${defaults.API_URL}/profile/scoring?${urlParams}`, { headers: this.riminder.headers });
-    }
-}
+    ProfileScoring.prototype.get = function (options) {
+        var urlParams = generateURLParams(options);
+        return httpRequest(defaults.API_URL + "/profile/scoring?" + urlParams, { headers: this.riminder.headers });
+    };
+    return ProfileScoring;
+}());
+export default ProfileScoring;
 //# sourceMappingURL=profileScoring.js.map
