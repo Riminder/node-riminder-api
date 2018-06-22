@@ -60,10 +60,9 @@ export class Webhooks {
             }
 
             const [encodedSignature, encodedPayload] = headers["HTTP_RIMINDER_SIGNATURE"].split(".");
-            const signature = util.decodeBase64(encodedSignature);
-            const expectedSignature = sha256.hmac(util.decodeUTF8(this.webhookSecretKey), util.decodeBase64(encodedPayload));
+            const expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(this.webhookSecretKey), util.decodeUTF8(encodedPayload)));
 
-            if (signature !== expectedSignature) {
+            if (encodedSignature !== expectedSignature) {
                 throw new Error("The signature is invalid");
             }
 
