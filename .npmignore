@@ -13,7 +13,7 @@ __tests__/
 src/
 .babelrc
 .gitignore
-gulpfile.jest
+gulpfile.js
 jest.config.js
 tsconfig.json
 tslint.json
