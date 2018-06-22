@@ -95,11 +95,33 @@ describe("Wrapper test", () => {
     });
 
     describe("Profile endpoints", () => {
-      test("It should call the get profiles endpoint", () => {
+      test("It should call the get profiles endpoint using Date object", () => {
         const options: ProfilesOptions = {
           source_ids: ["source1", "source2"],
           date_start: new Date(0),
           date_end: new Date(1234),
+          page: 1,
+          seniority: Seniority.ALL,
+          filter_id: "filter_id",
+          filter_reference: "filter_reference",
+          stage: Stage.YES,
+          rating: 1,
+          limit: 30,
+          sort_by: SortBy.RECEPTION,
+          order_by: OrderBy.DESC,
+        };
+        app.objects.getProfiles(options)
+          .then((response: any) => {
+          expect(response).toMatchSnapshot();
+          expect(getQueryParamAsArray(response.url.query)).toEqual(Object.keys(options));
+        });
+      });
+
+      test("It should call the get profiles endpoint using Date number", () => {
+        const options: ProfilesOptions = {
+          source_ids: ["source1", "source2"],
+          date_start: 0,
+          date_end: (new Date("2018-01-01")).getTime(),
           page: 1,
           seniority: Seniority.ALL,
           filter_id: "filter_id",
