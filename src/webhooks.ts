@@ -69,7 +69,7 @@ export class Webhooks {
 
             const payload: Webhooks.Response = JSON.parse(util.encodeUTF8(util.decodeBase64(encodedPayload)));
 
-            if (Events.indexOf(payload.type) > 0) {
+            if (Events.indexOf(payload.type) < 0) {
                 throw new Error(`Unknown event: ${payload.type}`);
             }
             this._callBinding(payload);
@@ -77,11 +77,11 @@ export class Webhooks {
     }
 
     on(event: string, callback: (data: Webhooks.Response) => any) {
-        if (Events.indexOf(event) > 0) {
+        if (Events.indexOf(event) < 0) {
             throw new Error("This event doesn't exist");
         }
 
-        if (!this.binding.has(event)) {
+        if (this.binding.has(event)) {
             throw new Error("This callback already has been declared");
         }
 
@@ -90,7 +90,7 @@ export class Webhooks {
         return this;
     }
 
-    _callBinding(payload: Webhooks.Response): void {
+    private _callBinding(payload: Webhooks.Response): void {
         if (this.binding.has(payload.type)) {
             this.binding.get(payload.type)(payload);
         }
