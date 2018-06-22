@@ -11,8 +11,8 @@ export const httpRequest = (url: string, options?: any) => {
   };
 
   return fetch(url, opts)
-    .then(successHandler, errorHandler)
-    .then((json: RiminderAPIResponse) => json.data);
+  .then(successHandler, errorHandler)
+  .then((json: RiminderAPIResponse) => json.data);
 };
 
 export const httpPostRequest = (url: string, data: any, file?: ReadStream, options?: any) => {
@@ -25,8 +25,8 @@ export const httpPostRequest = (url: string, data: any, file?: ReadStream, optio
   };
 
   return fetch(url, opts)
-    .then(successHandler, errorHandler)
-    .then((json: RiminderAPIResponse) => json.data);
+  .then(successHandler, errorHandler)
+  .then((json: RiminderAPIResponse) => json.data);
 };
 
 export const httpPatchRequest = (url: string, data: any, options?: any) => {
@@ -40,8 +40,8 @@ export const httpPatchRequest = (url: string, data: any, options?: any) => {
   };
 
   return fetch(url, opts)
-    .then(successHandler, errorHandler)
-    .then((json: RiminderAPIResponse) => json.data);
+  .then(successHandler, errorHandler)
+  .then((json: RiminderAPIResponse) => json.data);
 };
 
 const successHandler = (response: Response) => {
