@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import { FilterIdOrReference } from "../types";
 export default class Filters {
     private riminder;

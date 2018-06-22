@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var webhooks_1 = require("./webhooks");
 var sources_1 = require("./resources/sources");
 var filters_1 = require("./resources/filters");
@@ -39,5 +38,5 @@ var Riminder = /** @class */ (function () {
     };
     return Riminder;
 }());
-exports.default = Riminder;
+module.exports = Riminder;
 //# sourceMappingURL=index.js.map

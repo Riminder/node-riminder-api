@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import { RatingPatch } from "../types";
 export default class ProfileRating {
     private riminder;

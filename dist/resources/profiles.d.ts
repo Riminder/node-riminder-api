@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import Riminder from "..";
+import Riminder = require("..");
 import { ProfilesOptions, ProfileOptionIdOrReference, ProfileUpload } from "../types";
 import { ReadStream } from "fs";
 export default class Profiles {

@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
 import { StagePatch } from "../types";

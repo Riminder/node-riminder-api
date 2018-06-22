@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 export default class Sources {
     private riminder;
     constructor(riminder: Riminder);

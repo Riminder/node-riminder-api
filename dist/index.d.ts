@@ -8,7 +8,7 @@ import ProfileParsing from "./resources/profileParsing";
 import ProfileScoring from "./resources/profileScoring";
 import ProfileRating from "./resources/profileRating";
 import ProfileStage from "./resources/profileStage";
-export default class Riminder {
+declare class Riminder {
     headers: any;
     API_Key: string;
     Webhooks_Key: string;
@@ -24,3 +24,4 @@ export default class Riminder {
     constructor(options: RiminderOptions);
     private _init;
 }
+export = Riminder;

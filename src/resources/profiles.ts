@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import defaults from "../defaults";
 import { ProfilesOptions, ProfileOptionIdOrReference, ProfileUpload, TrainingMetadata } from "../types";
 import { generateURLParams } from "../utils";

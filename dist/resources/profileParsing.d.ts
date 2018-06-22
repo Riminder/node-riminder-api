@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import { ProfileOptionIdOrReference } from "../types";
 export default class ProfileParsing {
     private riminder;

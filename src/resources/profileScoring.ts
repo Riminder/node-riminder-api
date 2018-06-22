@@ -1,4 +1,4 @@
-import Riminder from "..";
+import Riminder = require("..");
 import defaults from "../defaults";
 import { generateURLParams } from "../utils";
 import { ProfileOptionIdOrReference } from "../types";
