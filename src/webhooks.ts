@@ -2,7 +2,7 @@ import Events from "./events";
 import * as util from "tweetnacl-util";
 import * as sha256 from "fast-sha256";
 
-namespace Webhooks {
+export namespace Webhooks {
     export interface ResponseBase {
         type: string;
         message: string;
@@ -41,7 +41,7 @@ namespace Webhooks {
 }
 
 export class Webhooks {
-    webhookSecretKey: string;
+    private webhookSecretKey: string;
     binding: Webhooks.EventCallbackMap;
 
     constructor(secretKey: string) {
