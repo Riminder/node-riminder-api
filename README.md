@@ -256,7 +256,7 @@ app.objects.updateProfileStage(data);
 Method that updates the rating of a profile on a particular filter.
 
 ```typescript
-const data: StagePatch = {
+const data: RatingPatch = {
     source_id: "source_id",
     rating: 2,
     profile_id: "profile_id",
