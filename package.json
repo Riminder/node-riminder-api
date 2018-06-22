@@ -1,12 +1,14 @@
 {
-  "name": "riminder-js-sdk",
+  "name": "node-riminder-api",
   "version": "0.0.1",
-  "description": "Vanilla Javascript wrapper SDK for Riminder.Net API",
-  "main": "./dist/riminder-sdk.js",
+  "description": "Node wrapper SDK for Riminder.Net API",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
-  "author": "Souhail RAZZOUK <souhail.razzouk@hotmail.com>",
+  "author": "Corentin Godeau <corentin.godeau@riminder.net>",
   "license": "ISC",
   "dependencies": {
     "babel-jest": "^23.0.1",
