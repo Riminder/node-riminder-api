@@ -4,7 +4,7 @@
 ## Install
 
 ```bash
-npm install --save node-riminder-api
+npm install --save riminder
 ```
 
 ## Usage
