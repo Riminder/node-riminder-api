@@ -15,7 +15,7 @@ export interface ProfilesOptions {
 
 export interface RiminderOptions {
   API_Key: string;
-  API_Secret?: string;
+  Webhooks_Key?: string;
 }
 
 export interface RiminderAPIResponse {
