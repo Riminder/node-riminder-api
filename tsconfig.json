@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "rootDir": "./",
+    "rootDir": "./src",
     "noImplicitAny": true,
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "temp/",
-    "moduleResolution": "node"
+    "outDir": "dist",
+    "moduleResolution": "node",
   },
   "exclude": [
-    "dist/"
+    "dist/",
+    "__tests__/",
   ]
 }
