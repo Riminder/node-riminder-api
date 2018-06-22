@@ -55,7 +55,7 @@ export class Objects {
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`, { headers: this.headers });
   }
 
-  postResumeForProfile(data: ProfileUpload, file: ReadStream) {
+  postProfile(data: ProfileUpload, file: ReadStream) {
     if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
       data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
     }

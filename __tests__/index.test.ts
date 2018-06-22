@@ -219,7 +219,7 @@ describe("Wrapper test", () => {
         };
 
         const file = fs.createReadStream("./test.txt");
-        app.objects.postResumeForProfile(data, file)
+        app.objects.postProfile(data, file)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,

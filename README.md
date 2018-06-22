@@ -122,7 +122,7 @@ const options: ProfilesOptions = {
 app.objects.getProfiles(options);
 ```
 
-#### objects.postResumeForProfile
+#### objects.postProfile
 
 Method that uploads a resume for a particular profile. It uses the following data:
 
@@ -161,7 +161,7 @@ const options: ProfileUpload = {
     }]
 }
 
-app.objects.postResumeForProfile(data, fs.createReadStream("myFile"));
+app.objects.postProfile(data, fs.createReadStream("myFile"));
 ```
 
 #### objects.getProfile
