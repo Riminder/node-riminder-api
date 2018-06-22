@@ -271,6 +271,57 @@ const data: StagePatch = {
 app.objects.updateProfileRating(data);
 ```
 
+## Webhooks
+
+### Riminder.webhooks
+
+This object is used to handle webhooks. If you give your webhooks secret key when you create the Riminder objects, you can setup them.
+
+```typescript
+const app = new Riminder({
+    API_Key: "Your API Key",
+    Webhooks_Key: "Your Webhooks key"
+});
+```
+
+### Events
+
+The current list of events is:
+
+```typescript
+const events = [
+    "profile.parse.success",
+    "profile.parse.error",
+    "profile.score.success",
+    "profile.score.error",
+    "filter.train.success",
+    "filter.train.error",
+    "filter.score.success",
+    "filter.score.error"
+];
+```
+
+#### webhooks.on
+
+You can use this funtion to setup a callback function called when a particular event happens.
+
+```typescript
+app.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
+    console.log("profile.parse.success received !");
+});
+```
+
+> **Note:** You can set a callback up only once, otherwise it will throw an error.
+
+#### webhooks.handleWebhook
+
+This function is the callback you need to call when a request is received on the webhook endpoint.
+It takes an object corresponding to the headers of the request and return a function.
+
+```typescript
+router.post(".../webhooks", app.webhooks.handleWebhook(request.headers));
+```
+
 ## Todos
 
 - [ ] The browser compatibility needs to be checked
