@@ -1,10 +1,12 @@
 import { Objects } from "./objects";
 import { RiminderOptions } from "./types";
+import { Webhooks } from "./webhooks";
 
 export class Riminder {
   public API_Key: string;
+  public Webhooks_Key: string;
   public objects: Objects;
-  public webhooks: any;
+  public webhooks: Webhooks;
   constructor(options: RiminderOptions) {
 
     if (!options.API_Key) {
@@ -13,12 +15,19 @@ export class Riminder {
     }
 
     this.API_Key = options.API_Key;
+
+    if (options.Webhooks_Key) {
+      this.Webhooks_Key = options.Webhooks_Key;
+    }
+
     this._init();
   }
 
   private _init() {
     this.objects = new Objects(this);
-    this.webhooks = {};
+    if (this.Webhooks_Key) {
+      this.webhooks = new Webhooks(this.Webhooks_Key);
+    }
   }
 
 }
