@@ -9,7 +9,7 @@ import ProfileScoring from "./resources/profileScoring";
 import ProfileRating from "./resources/profileRating";
 import ProfileStage from "./resources/profileStage";
 
-export class Riminder {
+export default class Riminder {
   public headers: any;
   public API_Key: string;
   public Webhooks_Key: string;

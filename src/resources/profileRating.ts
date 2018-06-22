@@ -1,4 +1,4 @@
-import { Riminder } from "..";
+import Riminder from "..";
 import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
 import { RatingPatch } from "../types";

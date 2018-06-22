@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
-import { Riminder } from "../src/index";
+import Riminder from "../src/index";
 import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy } from "../src/types";
 
 let app: Riminder;

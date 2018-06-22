@@ -1,4 +1,4 @@
-import { Riminder } from "..";
+import Riminder from "..";
 import defaults from "../defaults";
 import { FilterIdOrReference } from "../types";
 import { generateURLParams } from "../utils";
