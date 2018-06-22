@@ -165,7 +165,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_id: "profile_id",
         };
-        app.profileDocuments.getList(options).then((response: any) => {
+        app.profileDocuments.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -175,7 +175,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_reference: "profile_reference",
         };
-        app.profileDocuments.getList(options).then((response: any) => {
+        app.profileDocuments.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
