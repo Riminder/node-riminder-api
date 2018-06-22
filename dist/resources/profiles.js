@@ -1,13 +1,15 @@
-import defaults from "../defaults";
-import { generateURLParams } from "../utils";
-import { httpPostRequest, httpRequest } from "../http";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var defaults_1 = require("../defaults");
+var utils_1 = require("../utils");
+var http_1 = require("../http");
 var Profiles = /** @class */ (function () {
     function Profiles(riminder) {
         this.riminder = riminder;
     }
     Profiles.prototype.getOne = function (options) {
-        var urlParams = generateURLParams(options);
-        return httpRequest(defaults.API_URL + "/profile?" + urlParams, { headers: this.riminder.headers });
+        var urlParams = utils_1.generateURLParams(options);
+        return http_1.httpRequest(defaults_1.default.API_URL + "/profile?" + urlParams, { headers: this.riminder.headers });
     };
     Profiles.prototype.getList = function (options) {
         if (options.date_end && typeof options.date_end === "object") {
@@ -22,8 +24,8 @@ var Profiles = /** @class */ (function () {
         else {
             options.date_start = Math.floor(options.date_start / 1000);
         }
-        var urlParams = generateURLParams(options);
-        return httpRequest(defaults.API_URL + "/profiles?" + urlParams, { headers: this.riminder.headers });
+        var urlParams = utils_1.generateURLParams(options);
+        return http_1.httpRequest(defaults_1.default.API_URL + "/profiles?" + urlParams, { headers: this.riminder.headers });
     };
     Profiles.prototype.create = function (data, file) {
         if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
@@ -48,10 +50,10 @@ var Profiles = /** @class */ (function () {
                 }
             });
         }
-        var url = defaults.API_URL + "/profile";
-        return httpPostRequest(url, data, file, { headers: this.riminder.headers });
+        var url = defaults_1.default.API_URL + "/profile";
+        return http_1.httpPostRequest(url, data, file, { headers: this.riminder.headers });
     };
     return Profiles;
 }());
-export default Profiles;
+exports.default = Profiles;
 //# sourceMappingURL=profiles.js.map

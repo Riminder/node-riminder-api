@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8,6 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
 var APIError = /** @class */ (function (_super) {
     __extends(APIError, _super);
     function APIError(message, response) {
@@ -17,5 +19,5 @@ var APIError = /** @class */ (function (_super) {
     }
     return APIError;
 }(Error));
-export { APIError };
+exports.APIError = APIError;
 //# sourceMappingURL=errors.js.map

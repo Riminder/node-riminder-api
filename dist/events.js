@@ -1,4 +1,6 @@
-export default [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = [
     "profile.parse.success",
     "profile.parse.error",
     "profile.score.success",

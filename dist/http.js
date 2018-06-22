@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -6,23 +7,24 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-import "fetch-everywhere";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("fetch-everywhere");
 var FormData = require("form-data");
-import { APIError } from "./errors";
-export var httpRequest = function (url, options) {
+var errors_1 = require("./errors");
+exports.httpRequest = function (url, options) {
     var opts = __assign({ credentials: "include" }, options);
     return fetch(url, opts)
         .then(successHandler, errorHandler)
         .then(function (json) { return json.data; });
 };
-export var httpPostRequest = function (url, data, file, options) {
+exports.httpPostRequest = function (url, data, file, options) {
     var body = generateBody(data, file);
     var opts = __assign({}, options, { method: "POST", body: body });
     return fetch(url, opts)
         .then(successHandler, errorHandler)
         .then(function (json) { return json.data; });
 };
-export var httpPatchRequest = function (url, data, options) {
+exports.httpPatchRequest = function (url, data, options) {
     Object.assign(options.headers, { "Content-type": "application/json" });
     var body = JSON.stringify(data);
     var opts = __assign({}, options, { method: "PATCH", body: body });
@@ -35,7 +37,7 @@ var successHandler = function (response) {
         return response.json();
     }
     return response.json().then(function (data) {
-        throw new APIError("An error occured", data);
+        throw new errors_1.APIError("An error occured", data);
     });
 };
 var errorHandler = function (err) {

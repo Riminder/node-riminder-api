@@ -1,12 +1,14 @@
-import { Webhooks } from "./webhooks";
-import Sources from "./resources/sources";
-import Filters from "./resources/filters";
-import Profiles from "./resources/profiles";
-import ProfileDocuments from "./resources/profileDocuments";
-import ProfileParsing from "./resources/profileParsing";
-import ProfileScoring from "./resources/profileScoring";
-import ProfileRating from "./resources/profileRating";
-import ProfileStage from "./resources/profileStage";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var webhooks_1 = require("./webhooks");
+var sources_1 = require("./resources/sources");
+var filters_1 = require("./resources/filters");
+var profiles_1 = require("./resources/profiles");
+var profileDocuments_1 = require("./resources/profileDocuments");
+var profileParsing_1 = require("./resources/profileParsing");
+var profileScoring_1 = require("./resources/profileScoring");
+var profileRating_1 = require("./resources/profileRating");
+var profileStage_1 = require("./resources/profileStage");
 var Riminder = /** @class */ (function () {
     function Riminder(options) {
         if (!options.API_Key) {
@@ -24,18 +26,18 @@ var Riminder = /** @class */ (function () {
     }
     Riminder.prototype._init = function () {
         if (this.Webhooks_Key) {
-            this.webhooks = new Webhooks(this.Webhooks_Key);
+            this.webhooks = new webhooks_1.Webhooks(this.Webhooks_Key);
         }
-        this.sources = new Sources(this);
-        this.filters = new Filters(this);
-        this.profiles = new Profiles(this);
-        this.profileDocuments = new ProfileDocuments(this);
-        this.profileParsing = new ProfileParsing(this);
-        this.profileScoring = new ProfileScoring(this);
-        this.profileRating = new ProfileRating(this);
-        this.profileStage = new ProfileStage(this);
+        this.sources = new sources_1.default(this);
+        this.filters = new filters_1.default(this);
+        this.profiles = new profiles_1.default(this);
+        this.profileDocuments = new profileDocuments_1.default(this);
+        this.profileParsing = new profileParsing_1.default(this);
+        this.profileScoring = new profileScoring_1.default(this);
+        this.profileRating = new profileRating_1.default(this);
+        this.profileStage = new profileStage_1.default(this);
     };
     return Riminder;
 }());
-export default Riminder;
+exports.default = Riminder;
 //# sourceMappingURL=index.js.map

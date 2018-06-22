@@ -1,6 +1,8 @@
-import Events from "./events";
-import * as util from "tweetnacl-util";
-import * as sha256 from "fast-sha256";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var events_1 = require("./events");
+var util = require("tweetnacl-util");
+var sha256 = require("fast-sha256");
 var Webhooks = /** @class */ (function () {
     function Webhooks(secretKey) {
         if (!secretKey) {
@@ -21,14 +23,14 @@ var Webhooks = /** @class */ (function () {
                 throw new Error("The signature is invalid");
             }
             var payload = JSON.parse(util.encodeUTF8(util.decodeBase64(encodedPayload)));
-            if (Events.indexOf(payload.type) < 0) {
+            if (events_1.default.indexOf(payload.type) < 0) {
                 throw new Error("Unknown event: " + payload.type);
             }
             _this._callBinding(payload);
         };
     };
     Webhooks.prototype.on = function (event, callback) {
-        if (Events.indexOf(event) < 0) {
+        if (events_1.default.indexOf(event) < 0) {
             throw new Error("This event doesn't exist");
         }
         if (this.binding.has(event)) {
@@ -44,5 +46,5 @@ var Webhooks = /** @class */ (function () {
     };
     return Webhooks;
 }());
-export { Webhooks };
+exports.Webhooks = Webhooks;
 //# sourceMappingURL=webhooks.js.map

@@ -14,7 +14,6 @@
     "declaration": true,
     "outDir": "dist",
     "moduleResolution": "node",
-    "module": "es6"
   },
   "exclude": [
     "dist/",
