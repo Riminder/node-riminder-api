@@ -18,7 +18,7 @@ gulp.task('tslint', function () {
     }))
 });
 
-gulp.task('ts', ["browserify"], function () {
+gulp.task('ts', function () {
   var tsResult = gulp.src('src/**/*.ts')
     .pipe(tsProject());
 
@@ -28,7 +28,7 @@ gulp.task('ts', ["browserify"], function () {
   ]);
 });
 
-gulp.task('browserify', function () {
+gulp.task('browserify', ["ts"], function () {
   return browserify({
       entries: './temp/index.js',
       standalone: 'riminder-sdk',

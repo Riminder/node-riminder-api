@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": [],
     "target": "ES6",
     "rootDir": "./",
     "noImplicitAny": true,
@@ -9,9 +8,9 @@
     "sourceMap": true,
     "declaration": true,
     "outDir": "temp/",
+    "moduleResolution": "node"
   },
   "exclude": [
-    "node_modules",
     "dist/"
   ]
 }

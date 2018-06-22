@@ -1,2 +1,8 @@
 node_modules
 temp
+
+# Visual Studio Code folder
+.vscode/
+
+# Jest coverage report
+coverage/
