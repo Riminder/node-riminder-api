@@ -3,7 +3,7 @@ import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
 import { StagePatch } from "../types";
 
-export default class ProfileStaging {
+export default class ProfileStage {
   private riminder: Riminder;
   constructor(riminder: Riminder) {
     this.riminder = riminder;

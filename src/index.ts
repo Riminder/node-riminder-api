@@ -7,7 +7,7 @@ import ProfileDocuments from "./resources/profileDocuments";
 import ProfileParsing from "./resources/profileParsing";
 import ProfileScoring from "./resources/profileScoring";
 import ProfileRating from "./resources/profileRating";
-import ProfileStaging from "./resources/profileStaging";
+import ProfileStage from "./resources/profileStage";
 
 export class Riminder {
   public headers: any;
@@ -21,7 +21,7 @@ export class Riminder {
   public profileParsing: ProfileParsing;
   public profileScoring: ProfileScoring;
   public profileRating: ProfileRating;
-  public profileStaging: ProfileStaging;
+  public profileStage: ProfileStage;
 
   constructor(options: RiminderOptions) {
 
@@ -54,6 +54,6 @@ export class Riminder {
     this.profileParsing = new ProfileParsing(this);
     this.profileScoring = new ProfileScoring(this);
     this.profileRating = new ProfileRating(this);
-    this.profileStaging = new ProfileStaging(this);
+    this.profileStage = new ProfileStage(this);
   }
 }

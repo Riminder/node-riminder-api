@@ -263,7 +263,7 @@ describe("Wrapper test", () => {
           stage: Stage.YES,
         };
 
-        app.profileStaging.update(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -283,7 +283,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.profileStaging.update(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -303,7 +303,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.profileStaging.update(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -323,7 +323,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.profileStaging.update(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,

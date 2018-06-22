@@ -232,7 +232,7 @@ app.profileScoring.get(options);
 
 ### ProfileStaging
 
-#### riminder.profileStaging.update
+#### riminder.profileStage.update
 
 Method that updates the stage of a profile on a particular filter.
 
@@ -256,7 +256,7 @@ const data: StagePatch = {
     filter_reference: "filter_reference"
 }
 
-app.profileStaging.update(data);
+app.profileStage.update(data);
 ```
 
 ### ProfileRating
