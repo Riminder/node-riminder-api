@@ -1,56 +1,56 @@
 # node-riminder-api
 ⚡️ Riminder API Node Wrapper
 
-## Install
+# Install
 
 ```bash
 npm install --save riminder
 ```
 
-## Usage
+# Usage
 
 ```typescript
 import Riminder from 'riminder';
 const app = new Riminder({API_Key: "Your API Key"});
 ```
 
-## API
+# API
 
-### Riminder
+## Riminder
 
 Class constructor for your app instance, it should be called with an `options` object where you define your `API_Key`.
 
 > **Note:** All methods return a Promise when called.
 
-### Sources
+## Source
 
-#### riminder.sources.getList
+### riminder.source.list
 
 Method that gets a list of sources.
 
 ```typescript
-app.sources.getList();
+app.source.list();
 ```
 
-#### riminder.sources.getOne
+### riminder.source.get
 
 Method that gets a source by its id.
 
 ```typescript
-app.sources.getOne("source_id_here");
+app.source.get("source_id_here");
 ```
 
-### Filters
+## Filter
 
-#### riminder.filters.getList
+### riminder.filter.list
 
 Method that gets a list of filters.
 
 ```typescript
-app.filters.getList();
+app.filter.list();
 ```
 
-#### riminder.filters.getOne
+### riminder.filter.get
 
 Method that gets a filter by its id or its reference. It accepts an object as follows
 
@@ -61,12 +61,12 @@ const options: FilterIdOrReference = {
     filter_reference: "filter_reference"
 }
 
-app.filters.getOne(options);
+app.filter.get(options);
 ```
 
-### Profiles
+## Profile
 
-#### riminder.profiles.getList
+### riminder.profile.list
 
 Method that gets a list of profiles potentially filtered. It uses the following object to filter the results.
 
@@ -118,10 +118,10 @@ const options: ProfilesOptions = {
     sort_by: SortBy.RANKING
 }
 
-app.profiles.getList(options);
+app.profile.list(options);
 ```
 
-#### riminder.profiles.create
+### riminder.profile.add
 
 Method that uploads a resume for a particular profile. It uses the following data:
 
@@ -160,10 +160,10 @@ const options: ProfileUpload = {
     }]
 }
 
-app.profiles.create(data, fs.createReadStream("myFile"));
+app.profile.add(data, fs.createReadStream("myFile"));
 ```
 
-#### riminder.profiles.getOne
+### riminder.profile.get
 
 Method that gets a profile from a source using its id or reference.
 
@@ -175,12 +175,12 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profiles.getOne(options);
+app.profile.get(options);
 ```
 
-### ProfileDocuments
+### Document
 
-#### riminder.profileDocuments.get
+#### riminder.profile.document.get
 
 Method that gets the documents associated to a profile by its id or reference.
 
@@ -192,12 +192,12 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profileDocuments.get(options);
+app.profile.document.get(options);
 ```
 
-### ProfileParsing
+### Parsing
 
-#### riminder.profileParsing.get
+#### riminder.profile.parsing.get
 
 Method that gets the parsing result of a profile by its id or reference.
 
@@ -209,12 +209,12 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profileParsing.get(options);
+app.profile.parsing.get(options);
 ```
 
-### ProfileScoring
+### Scoring
 
-#### riminder.profileScoring.get
+#### riminder.profile.scoring.list
 
 Method that gets the scoring result of a profile by its id or reference.
 
@@ -226,12 +226,12 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profileScoring.get(options);
+app.profile.scoring.list(options);
 ```
 
-### ProfileStaging
+### Staging
 
-#### riminder.profileStage.update
+#### riminder.profile.stage.set
 
 Method that updates the stage of a profile on a particular filter.
 
@@ -255,12 +255,12 @@ const data: StagePatch = {
     filter_reference: "filter_reference"
 }
 
-app.profileStage.update(data);
+app.profile.stage.set(data);
 ```
 
-### ProfileRating
+### Rating
 
-#### riminder.profileRating.update
+#### riminder.profile.rating.set
 
 Method that updates the rating of a profile on a particular filter.
 
@@ -277,12 +277,12 @@ const data: RatingPatch = {
     filter_reference: "filter_reference"
 }
 
-app.profileRating.update(data);
+app.profile.rating.set(data);
 ```
 
-## Webhooks
+# Webhooks
 
-### Riminder.webhooks
+## Riminder.webhooks
 
 This object is used to handle webhooks. If you give your webhooks secret key when you create the Riminder objects, you can set them up.
 
@@ -293,7 +293,7 @@ const app = new Riminder({
 });
 ```
 
-### Events
+## Events
 
 The current list of events is:
 
@@ -310,7 +310,7 @@ const events = [
 ];
 ```
 
-#### webhooks.on
+### webhooks.on
 
 You can use this funtion to setup a callback function called when a particular event happens.
 
@@ -322,7 +322,7 @@ app.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
 
 > **Note:** You can set a callback up only once, otherwise it will throw an error.
 
-#### webhooks.handleWebhook
+### webhooks.handleWebhook
 
 This function is the callback you need to call when a request is received on the webhook endpoint.
 It takes an object corresponding to the headers of the request and returns a function.
@@ -331,6 +331,6 @@ It takes an object corresponding to the headers of the request and returns a fun
 router.post(".../webhooks", app.webhooks.handleWebhook(request.headers));
 ```
 
-## Todos
+# Todos
 
 - [ ] The browser compatibility needs to be checked
