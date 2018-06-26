@@ -1,13 +1,8 @@
 "use strict";
 var webhooks_1 = require("./webhooks");
-var sources_1 = require("./resources/sources");
-var filters_1 = require("./resources/filters");
-var profiles_1 = require("./resources/profiles");
-var profileDocuments_1 = require("./resources/profileDocuments");
-var profileParsing_1 = require("./resources/profileParsing");
-var profileScoring_1 = require("./resources/profileScoring");
-var profileRating_1 = require("./resources/profileRating");
-var profileStage_1 = require("./resources/profileStage");
+var source_1 = require("./resources/source");
+var filter_1 = require("./resources/filter");
+var profile_1 = require("./resources/profile");
 var Riminder = /** @class */ (function () {
     function Riminder(options) {
         if (!options.API_Key) {
@@ -27,14 +22,9 @@ var Riminder = /** @class */ (function () {
         if (this.Webhooks_Key) {
             this.webhooks = new webhooks_1.Webhooks(this.Webhooks_Key);
         }
-        this.sources = new sources_1.default(this);
-        this.filters = new filters_1.default(this);
-        this.profiles = new profiles_1.default(this);
-        this.profileDocuments = new profileDocuments_1.default(this);
-        this.profileParsing = new profileParsing_1.default(this);
-        this.profileScoring = new profileScoring_1.default(this);
-        this.profileRating = new profileRating_1.default(this);
-        this.profileStage = new profileStage_1.default(this);
+        this.source = new source_1.default(this);
+        this.filter = new filter_1.default(this);
+        this.profile = new profile_1.default(this);
     };
     return Riminder;
 }());
