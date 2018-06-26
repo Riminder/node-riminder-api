@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
-import { Riminder } from "../src/index";
+import Riminder from "../src/index";
 import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy } from "../src/types";
 
 let app: Riminder;
@@ -55,12 +55,12 @@ describe("Wrapper test", () => {
     app = new Riminder({API_Key: "api_key"});
     describe("Source endpoints", () => {
         test("It should call the get sources endpoint", () =>
-        app.objects.getSources().then((response: any) => {
+        app.sources.getList().then((response: any) => {
           expect(response).toMatchSnapshot();
         }));
 
         test("It should call the get source endpoint", () => {
-          app.objects.getSource("id").then((response: any) => {
+          app.sources.getOne("id").then((response: any) => {
             expect(response).toMatchSnapshot();
           });
         });
@@ -68,7 +68,7 @@ describe("Wrapper test", () => {
 
     describe("Filter endpoints", () => {
       test("It should call the get filters endpoint", () => {
-        app.objects.getFilters()
+        app.filters.getList()
           .then((response: any) => {
             expect(response).toMatchSnapshot();
           });
@@ -78,16 +78,17 @@ describe("Wrapper test", () => {
         const options = {
           filter_id: "filter_id"
         };
-        app.objects.getFilter(options)
+        app.filters.getOne(options)
           .then((response: any) => {
             expect(response).toMatchSnapshot();
           });
       });
+
       test("It sould call the get filter endpoint with the filter reference", () => {
         const options = {
           filter_reference: "filter_reference"
         };
-        app.objects.getFilter(options)
+        app.filters.getOne(options)
           .then((response: any) => {
             expect(response).toMatchSnapshot();
           });
@@ -110,7 +111,7 @@ describe("Wrapper test", () => {
           sort_by: SortBy.RECEPTION,
           order_by: OrderBy.DESC,
         };
-        app.objects.getProfiles(options)
+        app.profiles.getList(options)
           .then((response: any) => {
           expect(response).toMatchSnapshot();
           expect(getQueryParamAsArray(response.url.query)).toEqual(Object.keys(options));
@@ -132,7 +133,7 @@ describe("Wrapper test", () => {
           sort_by: SortBy.RECEPTION,
           order_by: OrderBy.DESC,
         };
-        app.objects.getProfiles(options)
+        app.profiles.getList(options)
           .then((response: any) => {
           expect(response).toMatchSnapshot();
           expect(getQueryParamAsArray(response.url.query)).toEqual(Object.keys(options));
@@ -144,7 +145,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_id: "profile_id",
         };
-        app.objects.getProfile(options).then((response: any) => {
+        app.profiles.getOne(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -154,7 +155,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_reference: "profile_reference",
         };
-        app.objects.getProfile(options).then((response: any) => {
+        app.profiles.getOne(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -164,7 +165,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_id: "profile_id",
         };
-        app.objects.getProfileDocuments(options).then((response: any) => {
+        app.profileDocuments.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -174,7 +175,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_reference: "profile_reference",
         };
-        app.objects.getProfileDocuments(options).then((response: any) => {
+        app.profileDocuments.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -184,7 +185,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_id: "profile_id",
         };
-        app.objects.getProfileParsing(options).then((response: any) => {
+        app.profileParsing.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -194,7 +195,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_reference: "profile_reference",
         };
-        app.objects.getProfileParsing(options).then((response: any) => {
+        app.profileParsing.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -204,7 +205,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_id: "profile_id",
         };
-        app.objects.getProfileScoring(options).then((response: any) => {
+        app.profileScoring.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -214,7 +215,7 @@ describe("Wrapper test", () => {
           source_id: "source_id",
           profile_reference: "profile_reference",
         };
-        app.objects.getProfileScoring(options).then((response: any) => {
+        app.profileScoring.get(options).then((response: any) => {
           expect(response).toMatchSnapshot();
         });
       });
@@ -241,7 +242,7 @@ describe("Wrapper test", () => {
         };
 
         const file = fs.createReadStream("./test.txt");
-        app.objects.postProfile(data, file)
+        app.profiles.create(data, file)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -261,7 +262,8 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.patchProfileStage(data)
+
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -281,7 +283,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.patchProfileStage(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -301,7 +303,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.patchProfileStage(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -321,7 +323,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           stage: Stage.YES,
         };
-        app.objects.patchProfileStage(data)
+        app.profileStage.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -341,7 +343,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.patchProfileRating(data)
+        app.profileRating.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -361,7 +363,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.patchProfileRating(data)
+        app.profileRating.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -381,7 +383,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.patchProfileRating(data)
+        app.profileRating.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,
@@ -401,7 +403,7 @@ describe("Wrapper test", () => {
           filter_id: "filter_id",
           rating: 2
         };
-        app.objects.patchProfileRating(data)
+        app.profileRating.update(data)
           .then((response: any) => {
             const responseWithoutBody = {
               url: response.url,

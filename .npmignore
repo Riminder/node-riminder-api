@@ -1,0 +1,19 @@
+node_modules
+temp
+
+# Visual Studio Code folder
+.vscode/
+
+# Jest coverage report
+coverage/
+
+# Useless in npm package
+__mocks__/
+__tests__/
+src/
+.babelrc
+.gitignore
+gulpfile.js
+jest.config.js
+tsconfig.json
+tslint.json

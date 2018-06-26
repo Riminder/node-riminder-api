@@ -1,4 +1,4 @@
-import { Riminder } from "../src/index";
+import Riminder from "../src/index";
 import { Webhooks } from "../src/webhooks";
 import * as util from "tweetnacl-util";
 import * as sha256 from "fast-sha256";

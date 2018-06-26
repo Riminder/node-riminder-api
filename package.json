@@ -1,15 +1,18 @@
 {
-  "name": "riminder-js-sdk",
-  "version": "0.0.1",
-  "description": "Vanilla Javascript wrapper SDK for Riminder.Net API",
-  "main": "./dist/riminder-sdk.js",
+  "name": "riminder",
+  "version": "0.0.5",
+  "description": "Node wrapper SDK for Riminder.Net API",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
-  "author": "Souhail RAZZOUK <souhail.razzouk@hotmail.com>",
+  "author": "Corentin Godeau <corentin.godeau@riminder.net>",
   "license": "ISC",
   "dependencies": {
     "babel-jest": "^23.0.1",
+    "es6-map": "^0.1.5",
     "fast-sha256": "^1.1.0",
     "fetch-everywhere": "^1.0.5",
     "form-data": "^2.3.2",
