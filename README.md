@@ -11,14 +11,14 @@ npm install --save riminder
 
 ```typescript
 import Riminder from 'riminder';
-const app = new Riminder({API_Key: "Your API Key"});
+const client = new Riminder({API_Key: "Your API Key"});
 ```
 
 # API
 
 ## Riminder
 
-Class constructor for your app instance, it should be called with an `options` object where you define your `API_Key`.
+Class constructor for your client instance, it should be called with an `options` object where you define your `API_Key`.
 
 > **Note:** All methods return a Promise when called.
 
@@ -29,7 +29,7 @@ Class constructor for your app instance, it should be called with an `options` o
 Method that gets a list of sources.
 
 ```typescript
-app.source.list();
+client.source.list();
 ```
 
 ### riminder.source.get
@@ -37,7 +37,7 @@ app.source.list();
 Method that gets a source by its id.
 
 ```typescript
-app.source.get("source_id_here");
+client.source.get("source_id_here");
 ```
 
 ## Filter
@@ -47,7 +47,7 @@ app.source.get("source_id_here");
 Method that gets a list of filters.
 
 ```typescript
-app.filter.list();
+client.filter.list();
 ```
 
 ### riminder.filter.get
@@ -61,7 +61,7 @@ const options: FilterIdOrReference = {
     filter_reference: "filter_reference"
 }
 
-app.filter.get(options);
+client.filter.get(options);
 ```
 
 ## Profile
@@ -118,7 +118,7 @@ const options: ProfilesOptions = {
     sort_by: SortBy.RANKING
 }
 
-app.profile.list(options);
+client.profile.list(options);
 ```
 
 ### riminder.profile.add
@@ -160,7 +160,7 @@ const options: ProfileUpload = {
     }]
 }
 
-app.profile.add(data, fs.createReadStream("myFile"));
+client.profile.add(data, fs.createReadStream("myFile"));
 ```
 
 ### riminder.profile.get
@@ -175,7 +175,7 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profile.get(options);
+client.profile.get(options);
 ```
 
 ### Document
@@ -192,7 +192,7 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profile.document.list(options);
+client.profile.document.list(options);
 ```
 
 ### Parsing
@@ -209,7 +209,7 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profile.parsing.get(options);
+client.profile.parsing.get(options);
 ```
 
 ### Scoring
@@ -226,7 +226,7 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profile.scoring.list(options);
+client.profile.scoring.list(options);
 ```
 
 ### Staging
@@ -255,7 +255,7 @@ const data: StagePatch = {
     filter_reference: "filter_reference"
 }
 
-app.profile.stage.set(data);
+client.profile.stage.set(data);
 ```
 
 ### Rating
@@ -277,7 +277,7 @@ const data: RatingPatch = {
     filter_reference: "filter_reference"
 }
 
-app.profile.rating.set(data);
+client.profile.rating.set(data);
 ```
 
 # Webhooks
@@ -287,7 +287,7 @@ app.profile.rating.set(data);
 This object is used to handle webhooks. If you give your webhooks secret key when you create the Riminder objects, you can set them up.
 
 ```typescript
-const app = new Riminder({
+const client = new Riminder({
     API_Key: "Your API Key",
     Webhooks_Key: "Your Webhooks key"
 });
@@ -317,7 +317,7 @@ const events = [
 You can use this funtion to setup a callback function called when a particular event happens.
 
 ```typescript
-app.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
+client.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
     console.log("profile.parse.success received !");
 });
 ```
@@ -330,7 +330,7 @@ This function is the callback you need to call when a request is received on the
 It takes an object corresponding to the headers of the request and returns a function.
 
 ```typescript
-router.post(".../webhooks", app.webhooks.handleWebhook(request.headers));
+router.post(".../webhooks", client.webhooks.handleWebhook(request.headers));
 ```
 
 # Todos
