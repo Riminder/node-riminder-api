@@ -6,7 +6,7 @@ exports[`Other tests http module relative tests It should throw an error if the 
 
 exports[`Other tests http module relative tests it should throw an error if something went wrong with the request 1`] = `[Error: Error message]`;
 
-exports[`Wrapper test Filter endpoints It should call the get filters endpoint 1`] = `
+exports[`Wrapper test Filter endpoints It should call the get filter list endpoint 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
@@ -126,6 +126,56 @@ Object {
     "protocol": "https:",
     "query": "source_id=source_id&profile_reference=profile_reference",
     "search": "?source_id=source_id&profile_reference=profile_reference",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the get profile endpoint using Date number 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "path": "/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "pathname": "/sf/public/api/v1.0/profiles",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "search": "?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the get profile endpoint using Date object 1`] = `
+Object {
+  "options": Object {
+    "credentials": "include",
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "path": "/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "pathname": "/sf/public/api/v1.0/profiles",
+    "port": null,
+    "protocol": "https:",
+    "query": "source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
+    "search": "?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
     "slashes": true,
   },
 }
@@ -276,56 +326,6 @@ Object {
     "protocol": "https:",
     "query": "source_id=source_id&profile_reference=profile_reference",
     "search": "?source_id=source_id&profile_reference=profile_reference",
-    "slashes": true,
-  },
-}
-`;
-
-exports[`Wrapper test Profile endpoints It should call the get profiles endpoint using Date number 1`] = `
-Object {
-  "options": Object {
-    "credentials": "include",
-    "headers": Object {
-      "X-API-Key": "api_key",
-    },
-  },
-  "url": Url {
-    "auth": null,
-    "hash": null,
-    "host": "www.riminder.net",
-    "hostname": "www.riminder.net",
-    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "path": "/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "pathname": "/sf/public/api/v1.0/profiles",
-    "port": null,
-    "protocol": "https:",
-    "query": "source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "search": "?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1514764800&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "slashes": true,
-  },
-}
-`;
-
-exports[`Wrapper test Profile endpoints It should call the get profiles endpoint using Date object 1`] = `
-Object {
-  "options": Object {
-    "credentials": "include",
-    "headers": Object {
-      "X-API-Key": "api_key",
-    },
-  },
-  "url": Url {
-    "auth": null,
-    "hash": null,
-    "host": "www.riminder.net",
-    "hostname": "www.riminder.net",
-    "href": "https://www.riminder.net/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "path": "/sf/public/api/v1.0/profiles?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "pathname": "/sf/public/api/v1.0/profiles",
-    "port": null,
-    "protocol": "https:",
-    "query": "source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
-    "search": "?source_ids=[%22source1%22,%22source2%22]&date_start=0&date_end=1&page=1&seniority=all&filter_id=filter_id&filter_reference=filter_reference&stage=YES&rating=1&limit=30&sort_by=reception&order_by=desc",
     "slashes": true,
   },
 }
@@ -589,7 +589,7 @@ Object {
 }
 `;
 
-exports[`Wrapper test Source endpoints It should call the get sources endpoint 1`] = `
+exports[`Wrapper test Source endpoints It should call the get source list endpoint 1`] = `
 Object {
   "options": Object {
     "credentials": "include",
