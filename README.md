@@ -10,7 +10,7 @@ npm install --save riminder
 ## Usage
 
 ```typescript
-import Riminder from 'node-riminder-api';
+import Riminder from 'riminder';
 const app = new Riminder({API_Key: "Your API Key"});
 ```
 
