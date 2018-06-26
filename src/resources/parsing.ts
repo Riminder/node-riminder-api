@@ -4,7 +4,7 @@ import { generateURLParams } from "../utils";
 import { ProfileOptionIdOrReference } from "../types";
 import { httpRequest } from "../http";
 
-export default class ProfileParsing {
+export default class Parsing {
   private riminder: Riminder;
 
   constructor(riminder: Riminder) {

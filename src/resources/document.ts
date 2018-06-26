@@ -4,7 +4,7 @@ import { generateURLParams } from "../utils";
 import { ProfileOptionIdOrReference } from "../types";
 import { httpRequest } from "../http";
 
-export default class ProfileDocuments {
+export default class Document {
   private riminder: Riminder;
 
   constructor(riminder: Riminder) {

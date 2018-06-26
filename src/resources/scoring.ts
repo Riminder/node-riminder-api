@@ -4,13 +4,13 @@ import { generateURLParams } from "../utils";
 import { ProfileOptionIdOrReference } from "../types";
 import { httpRequest } from "../http";
 
-export default class ProfileScoring {
+export default class Scoring {
   private riminder: Riminder;
   constructor(riminder: Riminder) {
     this.riminder = riminder;
   }
 
-  get(options: ProfileOptionIdOrReference) {
+  list(options: ProfileOptionIdOrReference) {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile/scoring?${urlParams}`, { headers: this.riminder.headers });
   }

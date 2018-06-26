@@ -1,16 +1,17 @@
 import Riminder = require("..");
 import defaults from "../defaults";
 import { httpPatchRequest } from "../http";
-import { StagePatch } from "../types";
+import { RatingPatch } from "../types";
 
-export default class ProfileStage {
+export default class Rating {
   private riminder: Riminder;
+
   constructor(riminder: Riminder) {
     this.riminder = riminder;
   }
 
-  update(data: StagePatch) {
-    let url = `${defaults.API_URL}/profile/stage`;
+  set(data: RatingPatch) {
+    let url = `${defaults.API_URL}/profile/rating`;
     return httpPatchRequest(url, data, { headers: this.riminder.headers });
   }
 }

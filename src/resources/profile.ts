@@ -4,20 +4,35 @@ import { ProfilesOptions, ProfileOptionIdOrReference, ProfileUpload, TrainingMet
 import { generateURLParams } from "../utils";
 import { ReadStream } from "fs";
 import { httpPostRequest, httpRequest } from "../http";
+import Document from "./document";
+import Parsing from "./parsing";
+import Scoring from "./scoring";
+import Stage from "./stage";
+import Rating from "./rating";
 
-export default class Profiles {
+export default class Profile {
   private riminder: Riminder;
+  document: Document;
+  parsing: Parsing;
+  scoring: Scoring;
+  stage: Stage;
+  rating: Rating;
 
   constructor(riminder: Riminder) {
     this.riminder = riminder;
+    this.document = new Document(this.riminder);
+    this.parsing = new Parsing(this.riminder);
+    this.scoring = new Scoring(this.riminder);
+    this.stage = new Stage(this.riminder);
+    this.rating = new Rating(this.riminder);
   }
 
-  getOne(options: ProfileOptionIdOrReference) {
+  get(options: ProfileOptionIdOrReference) {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile?${urlParams}`, { headers: this.riminder.headers });
   }
 
-  getList(options: ProfilesOptions) {
+  list(options: ProfilesOptions) {
     if (options.date_end && typeof options.date_end === "object") {
       options.date_end = Math.floor(options.date_end.getTime() / 1000);
     } else {
@@ -32,7 +47,7 @@ export default class Profiles {
     return httpRequest(`${defaults.API_URL}/profiles?${urlParams}`, { headers: this.riminder.headers });
   }
 
-  create(data: ProfileUpload, file: ReadStream) {
+  add(data: ProfileUpload, file: ReadStream) {
     if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
       data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
     } else {
