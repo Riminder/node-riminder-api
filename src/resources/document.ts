@@ -11,7 +11,7 @@ export default class Document {
     this.riminder = riminder;
   }
 
-  get(options: ProfileOptionIdOrReference) {
+  list(options: ProfileOptionIdOrReference) {
     const urlParams = generateURLParams(options);
     return httpRequest(`${defaults.API_URL}/profile/documents?${urlParams}`, { headers: this.riminder.headers });
   }

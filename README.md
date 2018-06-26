@@ -180,7 +180,7 @@ app.profile.get(options);
 
 ### Document
 
-#### riminder.profile.document.get
+#### riminder.profile.document.list
 
 Method that gets the documents associated to a profile by its id or reference.
 
@@ -192,7 +192,7 @@ const options: ProfileOptionIdOrReference = {
     profile_reference: "reference"
 }
 
-app.profile.document.get(options);
+app.profile.document.list(options);
 ```
 
 ### Parsing
