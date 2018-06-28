@@ -55,11 +55,11 @@ export class Webhooks {
 
   handleWebhook(headers: any): () => void {
     return () => {
-      if (!headers["HTTP_RIMINDER_SIGNATURE"]) {
+      if (!headers["HTTP-RIMINDER-SIGNATURE"]) {
         throw new Error("The signature is missing from the headers");
       }
 
-      const [encodedSignature, encodedPayload] = headers["HTTP_RIMINDER_SIGNATURE"].split(".");
+      const [encodedSignature, encodedPayload] = headers["HTTP-RIMINDER-SIGNATURE"].split(".");
       const expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(this.webhookSecretKey), util.decodeUTF8(encodedPayload)));
 
       if (encodedSignature !== expectedSignature) {

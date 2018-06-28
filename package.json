@@ -1,6 +1,6 @@
 {
   "name": "riminder",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Node wrapper SDK for Riminder.Net API",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

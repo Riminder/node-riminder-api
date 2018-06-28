@@ -90,7 +90,7 @@ describe("Webhooks tests",  () => {
             test("It should throw an error if the signature is invalid", () => {
                 const signature = generateSignature("wrong_key", "profile.parse.success");
                 const headers = {
-                    "HTTP_RIMINDER_SIGNATURE": signature
+                    "HTTP-RIMINDER-SIGNATURE": signature
                 };
                 expect(app.webhooks.handleWebhook(headers)).toThrowError("The signature is invalid");
             });
@@ -98,7 +98,7 @@ describe("Webhooks tests",  () => {
             test("It should throw an error if the event is unknown", () => {
                 const signature = generateSignature(Webhooks_Key, "unknwown.event");
                 const headers = {
-                    "HTTP_RIMINDER_SIGNATURE": signature
+                    "HTTP-RIMINDER-SIGNATURE": signature
                 };
                 expect(app.webhooks.handleWebhook(headers)).toThrowError("Unknown event: unknwown.event");
             });
@@ -106,7 +106,7 @@ describe("Webhooks tests",  () => {
             test("It should call the callbacj function", () => {
                 const signature = generateSignature(Webhooks_Key, "profile.parse.error");
                 const headers = {
-                    "HTTP_RIMINDER_SIGNATURE": signature
+                    "HTTP-RIMINDER-SIGNATURE": signature
                 };
                 app.webhooks.on("profile.parse.error", callbackMock);
                 app.webhooks.handleWebhook(headers)();
