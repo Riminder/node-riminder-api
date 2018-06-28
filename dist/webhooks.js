@@ -14,10 +14,10 @@ var Webhooks = /** @class */ (function () {
     Webhooks.prototype.handleWebhook = function (headers) {
         var _this = this;
         return function () {
-            if (!headers["HTTP_RIMINDER_SIGNATURE"]) {
+            if (!headers["HTTP-RIMINDER-SIGNATURE"]) {
                 throw new Error("The signature is missing from the headers");
             }
-            var _a = headers["HTTP_RIMINDER_SIGNATURE"].split("."), encodedSignature = _a[0], encodedPayload = _a[1];
+            var _a = headers["HTTP-RIMINDER-SIGNATURE"].split("."), encodedSignature = _a[0], encodedPayload = _a[1];
             var expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(_this.webhookSecretKey), util.decodeUTF8(encodedPayload)));
             if (encodedSignature !== expectedSignature) {
                 throw new Error("The signature is invalid");
