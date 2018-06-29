@@ -52,9 +52,7 @@ var generateBody = function (data, file) {
     }
     Object.keys(data).forEach(function (key) {
         if (data[key] instanceof Array) {
-            data[key].forEach(function (obj) {
-                body.append(key, JSON.stringify(obj));
-            });
+            body.append(key, JSON.stringify(data[key]));
         }
         else {
             body.append(key, data[key]);

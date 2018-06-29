@@ -68,9 +68,7 @@ const generateBody = (data: any, file?: ReadStream) => {
 
   Object.keys(data).forEach((key) => {
     if ((data as any)[key] instanceof Array) {
-      (data as any)[key].forEach((obj: any) => {
-        body.append(key, JSON.stringify(obj));
-      });
+      body.append(key, JSON.stringify((data as any)[key]));
     } else {
       body.append(key, (data as any)[key]);
     }
