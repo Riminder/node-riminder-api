@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
 import Riminder = require("../src/index");
-import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy } from "../src/types";
+import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy, DataUpload, DataUploadCheck } from "../src/types";
 
 let app: Riminder;
 
@@ -414,6 +414,91 @@ describe("Wrapper test", () => {
             };
             expect(responseWithoutBody).toMatchSnapshot();
           });
+      });
+
+      test("It should call the post profile data endpoint", () => {
+        const data: DataUpload = {
+          source_id: "source_id",
+          timestamp_reception: new Date("2018-01-01"),
+          profileData: {
+            profile_reference: "ref",
+            name: "Pierre Jean",
+            email: "pierre.jean@test.com",
+            educations: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "school title",
+              description: "a school",
+              location: "Paris",
+              school: "Vauban"
+            }],
+            experiences: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "experience title",
+              description: "a company",
+              location: "Paris",
+              company: "Comp"
+            }],
+            skills: [
+              "hard work",
+              "funny"
+            ]
+          }
+        };
+
+        app.profile.data.add(data).then((response: any) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        });
+      });
+
+      test("It should call the check profile data endpoint", () => {
+        const data: DataUploadCheck = {
+          timestamp_reception: new Date("2018-01-01"),
+          profileData: {
+            name: "Pierre Jean",
+            email: "pierre.jean@test.com",
+            profile_reference: "ref",
+            educations: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "school title",
+              description: "a school",
+              location: "Paris",
+              school: "Vauban"
+            }],
+            experiences: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "experience title",
+              description: "a company",
+              location: "Paris",
+              company: "Comp"
+            }],
+            skills: [
+              "hard work",
+              "funny"
+            ]
+          }
+        };
+
+        app.profile.data.check(data).then((response: any) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        });
       });
     });
 });
