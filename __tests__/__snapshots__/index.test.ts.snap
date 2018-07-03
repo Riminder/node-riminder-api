@@ -81,6 +81,32 @@ Object {
 }
 `;
 
+exports[`Wrapper test Profile endpoints It should call the check profile data endpoint 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "Content-type": "application/json",
+      "X-API-Key": "api_key",
+    },
+    "method": "POST",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/data/check",
+    "path": "/sf/public/api/v1.0/profile/data/check",
+    "pathname": "/sf/public/api/v1.0/profile/data/check",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
 exports[`Wrapper test Profile endpoints It should call the get profile document endpoint with the profile id 1`] = `
 Object {
   "options": Object {
@@ -530,6 +556,32 @@ Object {
     "href": "https://www.riminder.net/sf/public/api/v1.0/profile/stage",
     "path": "/sf/public/api/v1.0/profile/stage",
     "pathname": "/sf/public/api/v1.0/profile/stage",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;
+
+exports[`Wrapper test Profile endpoints It should call the post profile data endpoint 1`] = `
+Object {
+  "options": Object {
+    "headers": Object {
+      "Content-type": "application/json",
+      "X-API-Key": "api_key",
+    },
+    "method": "POST",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/profile/data",
+    "path": "/sf/public/api/v1.0/profile/data",
+    "pathname": "/sf/public/api/v1.0/profile/data",
     "port": null,
     "protocol": "https:",
     "query": null,
