@@ -132,6 +132,46 @@ export interface FilterReference {
 
 export type FilterIdOrReference = FilterId | FilterReference;
 
+export interface Experience {
+  start: string;
+  end: string;
+  title: string;
+  company: string;
+  location: string;
+  description: string;
+}
+
+export interface Education {
+  start: string;
+  end: string;
+  title: string;
+  school: string;
+  location: string;
+  description: string;
+}
+
+export interface ProfileData {
+  name: string;
+  email: string;
+  profile_reference?: string;
+  experiences: Array<Experience>;
+  educations: Array<Education>;
+  skills: Array<string>;
+}
+
+export interface DataUploadCheck {
+  profileData: ProfileData;
+  timestamp_reception?: Date | number;
+  profileMetadata?: Array<TrainingMetadata>;
+}
+
+export interface DataUpload {
+  source_id: string;
+  profileData: ProfileData;
+  timestamp_reception?: Date | number;
+  profileMetadata?: Array<TrainingMetadata>;
+}
+
 export enum Stage {
   NEW = "NEW",
   YES = "YES",

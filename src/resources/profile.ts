@@ -9,6 +9,7 @@ import Parsing from "./parsing";
 import Scoring from "./scoring";
 import Stage from "./stage";
 import Rating from "./rating";
+import Data from "./data";
 
 export default class Profile {
   private riminder: Riminder;
@@ -17,6 +18,7 @@ export default class Profile {
   scoring: Scoring;
   stage: Stage;
   rating: Rating;
+  data: Data;
 
   constructor(riminder: Riminder) {
     this.riminder = riminder;
@@ -25,6 +27,7 @@ export default class Profile {
     this.scoring = new Scoring(this.riminder);
     this.stage = new Stage(this.riminder);
     this.rating = new Rating(this.riminder);
+    this.data = new Data(this.riminder);
   }
 
   get(options: ProfileOptionIdOrReference) {
