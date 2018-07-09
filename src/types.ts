@@ -150,26 +150,26 @@ export interface Education {
   description: string;
 }
 
-export interface ProfileData {
+export interface ProfileJSON {
   name: string;
   email: string;
-  profile_reference?: string;
+  profileReference?: string;
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
 }
 
 export interface DataUploadCheck {
-  profileData: ProfileData;
+  profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  profileMetadata?: Array<TrainingMetadata>;
+  training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface DataUpload {
   source_id: string;
-  profileData: ProfileData;
+  profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  profileMetadata?: Array<TrainingMetadata>;
+  training_metadata?: Array<TrainingMetadata>;
 }
 
 export enum Stage {
