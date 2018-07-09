@@ -163,14 +163,14 @@ export interface ProfileJSON {
 export interface DataUploadCheck {
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadata>;
+  training_metadata?: Array<TrainingMetadataReference>;
 }
 
 export interface DataUpload {
   source_id: string;
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadata>;
+  training_metadata?: Array<TrainingMetadataReference>;
 }
 
 export enum Stage {
