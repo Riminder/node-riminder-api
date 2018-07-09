@@ -153,6 +153,7 @@ export interface Education {
 export interface ProfileJSON {
   name: string;
   email: string;
+  address: string;
   profileReference?: string;
   experiences: Array<Experience>;
   educations: Array<Education>;
