@@ -28,8 +28,8 @@ export default class Data {
     } else {
       data.timestamp_reception = Math.floor(data.timestamp_reception as number / 1000);
     }
-    if (data.profileMetadata) {
-      data.profileMetadata.forEach((metadata: TrainingMetadata) => {
+    if (data.training_metadata) {
+      data.training_metadata.forEach((metadata: TrainingMetadata) => {
         if (typeof metadata.rating_timestamp === "object") {
           metadata.rating_timestamp = Math.floor(metadata.rating_timestamp.getTime() / 1000);
         } else {
