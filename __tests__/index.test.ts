@@ -420,8 +420,9 @@ describe("Wrapper test", () => {
         const data: DataUpload = {
           source_id: "source_id",
           timestamp_reception: new Date("2018-01-01"),
-          profileData: {
-            profile_reference: "ref",
+          profile_json: {
+            profileReference: "ref",
+            address: "Paris",
             name: "Pierre Jean",
             email: "pierre.jean@test.com",
             educations: [{
@@ -462,10 +463,11 @@ describe("Wrapper test", () => {
       test("It should call the check profile data endpoint", () => {
         const data: DataUploadCheck = {
           timestamp_reception: new Date("2018-01-01"),
-          profileData: {
+          profile_json: {
             name: "Pierre Jean",
             email: "pierre.jean@test.com",
-            profile_reference: "ref",
+            profileReference: "ref",
+            address: "Paris",
             educations: [{
               start: "01/01/2017",
               end: "01/01/2018",
