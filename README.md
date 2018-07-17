@@ -314,10 +314,10 @@ const events = [
 
 ### webhooks.on
 
-You can use this funtion to setup a callback function called when a particular event happens.
+You can use this funtion to setup a callback function called when a particular event happens. The eventName is not mandatory, it's only here for simplicity.
 
 ```typescript
-client.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
+client.webhooks.on("profile.parse.success", (webhooksData: Webhooks.Response, eventName?: string) => {
     console.log("profile.parse.success received !");
 });
 ```

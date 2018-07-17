@@ -41,7 +41,7 @@ var Webhooks = /** @class */ (function () {
     };
     Webhooks.prototype._callBinding = function (payload) {
         if (this.binding.has(payload.type)) {
-            this.binding.get(payload.type)(payload.type, payload);
+            this.binding.get(payload.type)(payload, payload.type);
         }
     };
     return Webhooks;

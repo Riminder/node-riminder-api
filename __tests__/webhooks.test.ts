@@ -55,7 +55,7 @@ describe("Webhooks tests",  () => {
 
             test("It should throw an error if we try to bind an inexistant event", (done) => {
                 expect(() => {
-                    app.webhooks.on("not.an.event", (type: string, data: Webhooks.Response) => {});
+                    app.webhooks.on("not.an.event", (data: Webhooks.Response, type: string) => {});
                 }).toThrowError("This event doesn't exist");
                 done();
             });
@@ -63,19 +63,19 @@ describe("Webhooks tests",  () => {
             test("It should throw an error if we try to bind two functions to the same event", (done) => {
                 expect(() => {
                     app.webhooks
-                        .on("profile.parse.success", (type: string, data: Webhooks.Response) => {})
-                        .on("profile.parse.success", (type: string, data: Webhooks.Response) => {});
+                        .on("profile.parse.success", (data: Webhooks.Response, type: string) => {})
+                        .on("profile.parse.success", (data: Webhooks.Response, type: string) => {});
                 }).toThrowError("This callback already has been declared");
                 done();
             });
 
             test("It should bind the event correctly", (done) => {
-                expect(app.webhooks.on("profile.parse.success", (type: string, data: Webhooks.Response) => {
+                expect(app.webhooks.on("profile.parse.success", (data: Webhooks.Response, type: string) => {
                     console.log(type);
                     return 42;
                 })).toBeInstanceOf(Webhooks);
                 expect(app.webhooks.binding.has("profile.parse.success")).toBeTruthy();
-                expect(app.webhooks.binding.get("profile.parse.success")("test", {} as Webhooks.Response)).toBe(42);
+                expect(app.webhooks.binding.get("profile.parse.success")({} as Webhooks.Response, "test")).toBe(42);
                 done();
             });
         });
