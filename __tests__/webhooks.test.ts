@@ -55,7 +55,7 @@ describe("Webhooks tests",  () => {
 
             test("It should throw an error if we try to bind an inexistant event", (done) => {
                 expect(() => {
-                    app.webhooks.on("not.an.event", (data: Webhooks.Response) => {});
+                    app.webhooks.on("not.an.event", (type: string, data: Webhooks.Response) => {});
                 }).toThrowError("This event doesn't exist");
                 done();
             });
@@ -63,16 +63,19 @@ describe("Webhooks tests",  () => {
             test("It should throw an error if we try to bind two functions to the same event", (done) => {
                 expect(() => {
                     app.webhooks
-                        .on("profile.parse.success", (data: Webhooks.Response) => {})
-                        .on("profile.parse.success", (data: Webhooks.Response) => {});
+                        .on("profile.parse.success", (type: string, data: Webhooks.Response) => {})
+                        .on("profile.parse.success", (type: string, data: Webhooks.Response) => {});
                 }).toThrowError("This callback already has been declared");
                 done();
             });
 
             test("It should bind the event correctly", (done) => {
-                expect(app.webhooks.on("profile.parse.success", (data: Webhooks.Response) => 42)).toBeInstanceOf(Webhooks);
+                expect(app.webhooks.on("profile.parse.success", (type: string, data: Webhooks.Response) => {
+                    console.log(type);
+                    return 42;
+                })).toBeInstanceOf(Webhooks);
                 expect(app.webhooks.binding.has("profile.parse.success")).toBeTruthy();
-                expect(app.webhooks.binding.get("profile.parse.success")({} as Webhooks.Response)).toBe(42);
+                expect(app.webhooks.binding.get("profile.parse.success")("test", {} as Webhooks.Response)).toBe(42);
                 done();
             });
         });
@@ -84,7 +87,7 @@ describe("Webhooks tests",  () => {
             });
 
             test("It should throw an error if the header is not given", () => {
-                expect(app.webhooks.handleWebhook({})).toThrowError("The signature is missing from the headers");
+                expect(app.webhooks.handle({})).toThrowError("The signature is missing from the headers");
             });
 
             test("It should throw an error if the signature is invalid", () => {
@@ -92,7 +95,7 @@ describe("Webhooks tests",  () => {
                 const headers = {
                     "HTTP-RIMINDER-SIGNATURE": signature
                 };
-                expect(app.webhooks.handleWebhook(headers)).toThrowError("The signature is invalid");
+                expect(app.webhooks.handle(headers)).toThrowError("The signature is invalid");
             });
 
             test("It should throw an error if the event is unknown", () => {
@@ -100,7 +103,7 @@ describe("Webhooks tests",  () => {
                 const headers = {
                     "HTTP-RIMINDER-SIGNATURE": signature
                 };
-                expect(app.webhooks.handleWebhook(headers)).toThrowError("Unknown event: unknwown.event");
+                expect(app.webhooks.handle(headers)).toThrowError("Unknown event: unknwown.event");
             });
 
             test("It should call the callbacj function", () => {
@@ -109,7 +112,7 @@ describe("Webhooks tests",  () => {
                     "HTTP-RIMINDER-SIGNATURE": signature
                 };
                 app.webhooks.on("profile.parse.error", callbackMock);
-                app.webhooks.handleWebhook(headers)();
+                app.webhooks.handle(headers)();
                 expect(callbackMock).toHaveBeenCalledTimes(1);
             });
         });
