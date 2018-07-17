@@ -26,13 +26,13 @@ export declare namespace Webhooks {
         filter_id: string;
         filter_reference: string;
     }
-    type EventCallbackMap = Map<string, (data: Webhooks.Response) => any>;
+    type EventCallbackMap = Map<string, (type: string, data: Webhooks.Response) => any>;
 }
 export declare class Webhooks {
     private webhookSecretKey;
     binding: Webhooks.EventCallbackMap;
     constructor(secretKey: string);
-    handleWebhook(headers: any): () => void;
-    on(event: string, callback: (data: Webhooks.Response) => any): this;
+    handle(headers: any): () => void;
+    on(event: string, callback: (type: string, data: Webhooks.Response) => any): this;
     private _callBinding;
 }

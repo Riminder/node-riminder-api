@@ -11,7 +11,7 @@ var Webhooks = /** @class */ (function () {
         this.webhookSecretKey = secretKey;
         this.binding = new Map();
     }
-    Webhooks.prototype.handleWebhook = function (headers) {
+    Webhooks.prototype.handle = function (headers) {
         var _this = this;
         return function () {
             if (!headers["HTTP-RIMINDER-SIGNATURE"]) {
@@ -41,7 +41,7 @@ var Webhooks = /** @class */ (function () {
     };
     Webhooks.prototype._callBinding = function (payload) {
         if (this.binding.has(payload.type)) {
-            this.binding.get(payload.type)(payload);
+            this.binding.get(payload.type)(payload.type, payload);
         }
     };
     return Webhooks;
