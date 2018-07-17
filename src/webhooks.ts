@@ -37,7 +37,7 @@ export namespace Webhooks {
     filter_reference: string;
   }
 
-  export type EventCallbackMap = Map<string, (type: string, data: Webhooks.Response) => any>;
+  export type EventCallbackMap = Map<string, (data: Webhooks.Response, type: string) => any>;
 }
 
 export class Webhooks {
@@ -50,7 +50,7 @@ export class Webhooks {
     }
 
     this.webhookSecretKey = secretKey;
-    this.binding = new Map<string, (type: string, data: Webhooks.Response) => any>();
+    this.binding = new Map<string, (data: Webhooks.Response, type: string) => any>();
   }
 
   handle(headers: any): () => void {
@@ -75,7 +75,7 @@ export class Webhooks {
     };
   }
 
-  on(event: string, callback: (type: string, data: Webhooks.Response) => any) {
+  on(event: string, callback: (data: Webhooks.Response, type?: string) => any) {
     if (Events.indexOf(event) < 0) {
       throw new Error("This event doesn't exist");
     }
@@ -91,7 +91,7 @@ export class Webhooks {
 
   private _callBinding(payload: Webhooks.Response): void {
     if (this.binding.has(payload.type)) {
-      this.binding.get(payload.type)(payload.type, payload);
+      this.binding.get(payload.type)(payload, payload.type);
     }
   }
 }
