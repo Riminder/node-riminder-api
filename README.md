@@ -324,13 +324,13 @@ client.webhooks.on("profile.parse.success", (data: Webhooks.Response) => {
 
 > **Note:** You can set a callback up only once, otherwise it will throw an error.
 
-### webhooks.handleWebhook
+### webhooks.handle
 
 This function is the callback you need to call when a request is received on the webhook endpoint.
 It takes an object corresponding to the headers of the request and returns a function.
 
 ```typescript
-router.post(".../webhooks", client.webhooks.handleWebhook(request.headers));
+router.post(".../webhooks", client.webhooks.handle(request.headers));
 ```
 
 # Todos
