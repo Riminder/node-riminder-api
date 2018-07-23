@@ -30,19 +30,13 @@ export interface ProfileOptionReference {
     profile_reference: string;
 }
 export declare type ProfileOptionIdOrReference = ProfileOptionId | ProfileOptionReference;
-export interface TrainingMetadataBase {
+export interface TrainingMetadata {
+    filter_reference: string;
     stage: Stage;
     stage_timestamp: Date | number;
     rating: number;
     rating_timestamp: Date | number;
 }
-export interface TrainingMetadataId extends TrainingMetadataBase {
-    filter_id: string;
-}
-export interface TrainingMetadataReference extends TrainingMetadataBase {
-    filter_reference: string;
-}
-export declare type TrainingMetadata = TrainingMetadataId | TrainingMetadataReference;
 export interface ProfileUpload {
     source_id: string;
     profile_reference: string;
@@ -126,13 +120,13 @@ export interface ProfileJSON {
 export interface JsonUploadCheck {
     profile_json: ProfileJSON;
     timestamp_reception?: Date | number;
-    training_metadata?: Array<TrainingMetadataReference>;
+    training_metadata?: Array<TrainingMetadata>;
 }
 export interface JsonUpload {
     source_id: string;
     profile_json: ProfileJSON;
     timestamp_reception?: Date | number;
-    training_metadata?: Array<TrainingMetadataReference>;
+    training_metadata?: Array<TrainingMetadata>;
 }
 export declare enum Stage {
     NEW = "NEW",
