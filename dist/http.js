@@ -46,18 +46,22 @@ var errorHandler = function (err) {
     return Promise.reject(error);
 };
 var generateBody = function (data, file) {
-    var body = new FormData();
+    var body;
     if (file) {
+        body = new FormData();
         body.append("file", file);
+        Object.keys(data).forEach(function (key) {
+            if (data[key] instanceof Array) {
+                body.append(key, JSON.stringify(data[key]));
+            }
+            else {
+                body.append(key, data[key]);
+            }
+        });
     }
-    Object.keys(data).forEach(function (key) {
-        if (data[key] instanceof Array) {
-            body.append(key, JSON.stringify(data[key]));
-        }
-        else {
-            body.append(key, data[key]);
-        }
-    });
+    else {
+        body = JSON.stringify(data);
+    }
     return body;
 };
 //# sourceMappingURL=http.js.map

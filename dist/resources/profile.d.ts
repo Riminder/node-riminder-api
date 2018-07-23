@@ -7,6 +7,7 @@ import Parsing from "./parsing";
 import Scoring from "./scoring";
 import Stage from "./stage";
 import Rating from "./rating";
+import JSON from "./json";
 export default class Profile {
     private riminder;
     document: Document;
@@ -14,6 +15,7 @@ export default class Profile {
     scoring: Scoring;
     stage: Stage;
     rating: Rating;
+    json: JSON;
     constructor(riminder: Riminder);
     get(options: ProfileOptionIdOrReference): Promise<any>;
     list(options: ProfilesOptions): Promise<any>;
