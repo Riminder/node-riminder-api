@@ -134,8 +134,6 @@ interface ProfileUpload {
 }
 
 interface TrainingMetadata {
-  filter_id: string;
-  // Or
   filter_reference: string;
   stage: Stage;
   stage_timestamp: Date | number;
@@ -152,7 +150,7 @@ const options: ProfileUpload = {
     profile_reference: "profile_reference",
     timestamp_reception: Date.now(),
     training_metadata: [{
-        filter_id: "filter_id",
+        filter_reference: "filter_reference",
         stage: Stage.YES,
         stage_timestamp: Date.now(),
         rating: 2,
