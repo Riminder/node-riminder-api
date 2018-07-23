@@ -1,6 +1,6 @@
 import Riminder = require("..");
 import defaults from "../defaults";
-import { DataUpload, TrainingMetadata, DataUploadCheck } from "../types";
+import { JsonUpload, TrainingMetadata, JsonUploadCheck } from "../types";
 import { httpPostRequest } from "../http";
 
 export default class JSON {
@@ -10,19 +10,19 @@ export default class JSON {
     this.riminder = riminder;
   }
 
-  add(data: DataUpload) {
+  add(data: JsonUpload) {
     const transformedData = this._tranformTimestamp(data);
     const url = `${defaults.API_URL}/profile/json`;
     return httpPostRequest(url, transformedData, null, { headers: this.riminder.headers });
   }
 
-  check(data: DataUploadCheck) {
+  check(data: JsonUploadCheck) {
     const transformedData = this._tranformTimestamp(data);
     const url = `${defaults.API_URL}/profile/json/check`;
     return httpPostRequest(url, transformedData, null, { headers: this.riminder.headers });
   }
 
-  private _tranformTimestamp(data: DataUpload | DataUploadCheck): DataUpload | DataUploadCheck {
+  private _tranformTimestamp(data: JsonUpload | JsonUploadCheck): JsonUpload | JsonUploadCheck {
     if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
       data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
     } else {

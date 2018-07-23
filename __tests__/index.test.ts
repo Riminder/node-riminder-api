@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
 import Riminder = require("../src/index");
-import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy, DataUpload, DataUploadCheck } from "../src/types";
+import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy, JsonUpload, JsonUploadCheck } from "../src/types";
 
 let app: Riminder;
 
@@ -417,7 +417,7 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the post profile data endpoint", () => {
-        const json: DataUpload = {
+        const json: JsonUpload = {
           source_id: "source_id",
           timestamp_reception: new Date("2018-01-01"),
           profile_json: {
@@ -461,7 +461,7 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the check profile data endpoint", () => {
-        const json: DataUploadCheck = {
+        const json: JsonUploadCheck = {
           timestamp_reception: new Date("2018-01-01"),
           profile_json: {
             name: "Pierre Jean",

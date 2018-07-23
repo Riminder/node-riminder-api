@@ -160,13 +160,13 @@ export interface ProfileJSON {
   skills: Array<string>;
 }
 
-export interface DataUploadCheck {
+export interface JsonUploadCheck {
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
   training_metadata?: Array<TrainingMetadataReference>;
 }
 
-export interface DataUpload {
+export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
