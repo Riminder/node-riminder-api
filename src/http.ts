@@ -60,19 +60,21 @@ const errorHandler = (err: any) => {
 };
 
 const generateBody = (data: any, file?: ReadStream) => {
-  const body = new FormData();
+  let body: any;
 
   if (file) {
+    body = new FormData();
     body.append("file", file as any);
+    Object.keys(data).forEach((key) => {
+      if ((data as any)[key] instanceof Array) {
+        body.append(key, JSON.stringify((data as any)[key]));
+      } else {
+        body.append(key, (data as any)[key]);
+      }
+    });
+  } else {
+    body = JSON.stringify(data);
   }
-
-  Object.keys(data).forEach((key) => {
-    if ((data as any)[key] instanceof Array) {
-      body.append(key, JSON.stringify((data as any)[key]));
-    } else {
-      body.append(key, (data as any)[key]);
-    }
-  });
 
   return body;
 };

@@ -178,6 +178,174 @@ const options: ProfileOptionIdOrReference = {
 client.profile.get(options);
 ```
 
+### JSON
+
+#### riminder.profile.json.check
+
+Method that check if the structured profile is valid.
+
+```typescript
+export interface JsonUploadCheck {
+  profile_json: ProfileJSON;
+  timestamp_reception?: Date | number;
+  training_metadata?: Array<TrainingMetadataReference>;
+}
+
+export interface ProfileJSON {
+  name: string;
+  email: string;
+  address: string;
+  profileReference?: string;
+  experiences: Array<Experience>;
+  educations: Array<Education>;
+  skills: Array<string>;
+}
+
+export interface Experience {
+  start: string;
+  end: string;
+  title: string;
+  company: string;
+  location: string;
+  description: string;
+}
+
+export interface Education {
+  start: string;
+  end: string;
+  title: string;
+  school: string;
+  location: string;
+  description: string;
+}
+
+export interface TrainingMetadataReference {
+  stage: Stage;
+  stage_timestamp: Date | number;
+  rating: number;
+  rating_timestamp: Date | number;
+  filter_reference: string;
+}
+```
+
+```typescript
+const data: JsonUploadCheck = {
+  timestamp_reception: new Date("2015-01-01"),
+  profile_json: {
+    name: "Marty McFly",
+    email: "marty.mcfly@gmail.com",
+    address: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420",
+    profileReference: "marty",
+    educations: [{
+      start: "01/01/1985",
+      end: "01/01/1986",
+      title: "Hill Valley High School",
+      description: "a school",
+      location: "Hill Valley",
+      school: "Hill Valley High School"
+    }],
+    experiences: [{
+      start: "01/01/2017",
+      end: "01/01/2018",
+      title: "CusCo employee",
+      description: "Fujitsu company",
+      location: "Hill Valley",
+      company: "CusCo"
+    }],
+    skills: [
+      "skate",
+      "time travel"
+    ]
+  }
+};
+
+client.profile.json.check(options);
+```
+
+#### riminder.profile.json.check
+
+Method that upload a structured profile to the platform.
+
+```typescript
+export interface JsonUpload {
+  source_id: string;
+  profile_json: ProfileJSON;
+  timestamp_reception?: Date | number;
+  training_metadata?: Array<TrainingMetadataReference>;
+}
+
+export interface ProfileJSON {
+  name: string;
+  email: string;
+  address: string;
+  profileReference?: string;
+  experiences: Array<Experience>;
+  educations: Array<Education>;
+  skills: Array<string>;
+}
+
+export interface Experience {
+  start: string;
+  end: string;
+  title: string;
+  company: string;
+  location: string;
+  description: string;
+}
+
+export interface Education {
+  start: string;
+  end: string;
+  title: string;
+  school: string;
+  location: string;
+  description: string;
+}
+
+export interface TrainingMetadataReference {
+  stage: Stage;
+  stage_timestamp: Date | number;
+  rating: number;
+  rating_timestamp: Date | number;
+  filter_reference: string;
+}
+```
+
+```typescript
+const data: JsonUploadCheck = {
+  source_id: "source_id",
+  timestamp_reception: new Date("2015-01-01"),
+  profile_json: {
+    name: "Marty McFly",
+    email: "marty.mcfly@gmail.com",
+    address: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420",
+    profileReference: "marty",
+    educations: [{
+      start: "01/01/1985",
+      end: "01/01/1986",
+      title: "Hill Valley High School",
+      description: "a school",
+      location: "Hill Valley",
+      school: "Hill Valley High School"
+    }],
+    experiences: [{
+      start: "01/01/2017",
+      end: "01/01/2018",
+      title: "CusCo employee",
+      description: "Fujitsu company",
+      location: "Hill Valley",
+      company: "CusCo"
+    }],
+    skills: [
+      "skate",
+      "time travel"
+    ]
+  }
+};
+
+client.profile.json.add(options);
+```
+
 ### Document
 
 #### riminder.profile.document.list

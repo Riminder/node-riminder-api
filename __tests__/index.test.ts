@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { generateURLParams } from "../src/utils";
 import { httpRequest } from "../src/http";
 import Riminder = require("../src/index");
-import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy } from "../src/types";
+import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, RatingPatch, Seniority, SortBy, OrderBy, JsonUpload, JsonUploadCheck } from "../src/types";
 
 let app: Riminder;
 
@@ -414,6 +414,93 @@ describe("Wrapper test", () => {
             };
             expect(responseWithoutBody).toMatchSnapshot();
           });
+      });
+
+      test("It should call the post profile data endpoint", () => {
+        const json: JsonUpload = {
+          source_id: "source_id",
+          timestamp_reception: new Date("2018-01-01"),
+          profile_json: {
+            profileReference: "ref",
+            address: "Paris",
+            name: "Pierre Jean",
+            email: "pierre.jean@test.com",
+            educations: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "school title",
+              description: "a school",
+              location: "Paris",
+              school: "Vauban"
+            }],
+            experiences: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "experience title",
+              description: "a company",
+              location: "Paris",
+              company: "Comp"
+            }],
+            skills: [
+              "hard work",
+              "funny"
+            ]
+          }
+        };
+
+        app.profile.json.add(json).then((response: any) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        });
+      });
+
+      test("It should call the check profile data endpoint", () => {
+        const json: JsonUploadCheck = {
+          timestamp_reception: new Date("2018-01-01"),
+          profile_json: {
+            name: "Pierre Jean",
+            email: "pierre.jean@test.com",
+            profileReference: "ref",
+            address: "Paris",
+            educations: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "school title",
+              description: "a school",
+              location: "Paris",
+              school: "Vauban"
+            }],
+            experiences: [{
+              start: "01/01/2017",
+              end: "01/01/2018",
+              title: "experience title",
+              description: "a company",
+              location: "Paris",
+              company: "Comp"
+            }],
+            skills: [
+              "hard work",
+              "funny"
+            ]
+          }
+        };
+
+        app.profile.json.check(json).then((response: any) => {
+          const responseWithoutBody = {
+            url: response.url,
+            options: {
+              headers: response.options.headers,
+              method: response.options.method
+            }
+          };
+          expect(responseWithoutBody).toMatchSnapshot();
+        });
       });
     });
 });
