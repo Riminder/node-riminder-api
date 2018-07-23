@@ -461,6 +461,22 @@ const client = new Riminder({
 });
 ```
 
+## Check
+
+### webhooks.check
+
+This function is used to check if the webhook integration is set up.
+
+```typescript
+client.webhooks.check().then((response: WebhooksResponse) => console.log(response))
+
+export interface WebhooksResponse {
+  team_name: string;
+  webhook_id: string;
+  webhook_url: string;
+}
+```
+
 ## Events
 
 The current list of events is:
@@ -502,5 +518,3 @@ router.post(".../webhooks", client.webhooks.handle(request.headers));
 ```
 
 # Todos
-
-- [ ] The browser compatibility needs to be checked
