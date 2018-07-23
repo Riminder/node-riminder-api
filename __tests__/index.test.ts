@@ -226,14 +226,14 @@ describe("Wrapper test", () => {
           profile_reference: "ref",
           timestamp_reception: new Date(Date.now()),
           training_metadata: [{
-            filter_id: "filter_id1",
+            filter_reference: "filter_reference1",
             stage: Stage.YES,
             stage_timestamp: new Date(Date.now()),
             rating: 2,
             rating_timestamp: new Date(Date.now())
           },
           {
-            filter_reference: "filter_reference",
+            filter_reference: "filter_reference2",
             stage: Stage.YES,
             stage_timestamp: new Date(Date.now()),
             rating: 2,
