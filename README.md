@@ -188,7 +188,7 @@ Method that check if the structured profile is valid.
 export interface JsonUploadCheck {
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadataReference>;
+  training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface ProfileJSON {
@@ -219,7 +219,7 @@ export interface Education {
   description: string;
 }
 
-export interface TrainingMetadataReference {
+export interface TrainingMetadata {
   stage: Stage;
   stage_timestamp: Date | number;
   rating: number;
@@ -271,7 +271,7 @@ export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
   timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadataReference>;
+  training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface ProfileJSON {
@@ -302,7 +302,7 @@ export interface Education {
   description: string;
 }
 
-export interface TrainingMetadataReference {
+export interface TrainingMetadata {
   stage: Stage;
   stage_timestamp: Date | number;
   rating: number;
