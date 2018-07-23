@@ -34,7 +34,7 @@ class Riminder {
 
   private _init() {
     if (this.Webhooks_Key) {
-      this.webhooks = new Webhooks(this.Webhooks_Key);
+      this.webhooks = new Webhooks(this);
     }
 
     this.source = new Source(this);
