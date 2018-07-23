@@ -1,3 +1,5 @@
+import Riminder = require("./index");
+import { WebhooksResponse } from "./types";
 export declare namespace Webhooks {
     interface ResponseBase {
         type: string;
@@ -29,10 +31,11 @@ export declare namespace Webhooks {
     type EventCallbackMap = Map<string, (data: Webhooks.Response, type: string) => any>;
 }
 export declare class Webhooks {
-    private webhookSecretKey;
+    private riminder;
     binding: Webhooks.EventCallbackMap;
-    constructor(secretKey: string);
+    constructor(riminder: Riminder);
     handle(headers: any): () => void;
     on(event: string, callback: (data: Webhooks.Response, type?: string) => any): this;
+    check(): Promise<WebhooksResponse>;
     private _callBinding;
 }

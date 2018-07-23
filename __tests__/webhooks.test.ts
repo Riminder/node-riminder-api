@@ -29,6 +29,16 @@ function generateSignature(key: string, event: string) {
 const callbackMock = jest.fn();
 
 describe("Webhooks tests",  () => {
+    describe("Webhook check", () => {
+        test("It should check if the webhook is correctly set up", () => {
+            app = new Riminder({ API_Key, Webhooks_Key });
+            app.webhooks.check()
+                .then((response) => {
+                    expect(response).toMatchSnapshot();
+                });
+        });
+    });
+
     describe("Webhook creation", () => {
         test("It should not create webhooks if no key is given", () => {
             app = new Riminder({ API_Key });

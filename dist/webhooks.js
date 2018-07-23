@@ -3,12 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var events_1 = require("./events");
 var util = require("tweetnacl-util");
 var sha256 = require("fast-sha256");
+var defaults_1 = require("./defaults");
+var http_1 = require("./http");
 var Webhooks = /** @class */ (function () {
-    function Webhooks(secretKey) {
-        if (!secretKey) {
+    function Webhooks(riminder) {
+        if (!riminder || !riminder.Webhooks_Key) {
             throw new Error("The webhook secret key must be specified");
         }
-        this.webhookSecretKey = secretKey;
+        this.riminder = riminder;
         this.binding = new Map();
     }
     Webhooks.prototype.handle = function (headers) {
@@ -18,7 +20,7 @@ var Webhooks = /** @class */ (function () {
                 throw new Error("The signature is missing from the headers");
             }
             var _a = headers["HTTP-RIMINDER-SIGNATURE"].split("."), encodedSignature = _a[0], encodedPayload = _a[1];
-            var expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(_this.webhookSecretKey), util.decodeUTF8(encodedPayload)));
+            var expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(_this.riminder.Webhooks_Key), util.decodeUTF8(encodedPayload)));
             if (encodedSignature !== expectedSignature) {
                 throw new Error("The signature is invalid");
             }
@@ -38,6 +40,10 @@ var Webhooks = /** @class */ (function () {
         }
         this.binding.set(event, callback);
         return this;
+    };
+    Webhooks.prototype.check = function () {
+        var url = defaults_1.default.API_URL + "/webhook/check";
+        return http_1.httpPostRequest(url, null, null, { headers: this.riminder.headers });
     };
     Webhooks.prototype._callBinding = function (payload) {
         if (this.binding.has(payload.type)) {

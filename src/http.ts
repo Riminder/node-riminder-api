@@ -15,8 +15,8 @@ export const httpRequest = (url: string, options?: any) => {
   .then((json: RiminderAPIResponse) => json.data);
 };
 
-export const httpPostRequest = (url: string, data: any, file?: ReadStream, options?: any) => {
-  const body = generateBody(data, file);
+export const httpPostRequest = (url: string, data?: any, file?: ReadStream, options?: any) => {
+  const body = data ? generateBody(data, file) : null;
 
   const opts = {
     ...options,

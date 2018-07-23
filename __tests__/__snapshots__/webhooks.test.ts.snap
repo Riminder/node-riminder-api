@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Webhooks tests Webhook check It should check if the webhook is correctly set up 1`] = `
+Object {
+  "options": Object {
+    "body": null,
+    "headers": Object {
+      "X-API-Key": "api_key",
+    },
+    "method": "POST",
+  },
+  "url": Url {
+    "auth": null,
+    "hash": null,
+    "host": "www.riminder.net",
+    "hostname": "www.riminder.net",
+    "href": "https://www.riminder.net/sf/public/api/v1.0/webhook/check",
+    "path": "/sf/public/api/v1.0/webhook/check",
+    "pathname": "/sf/public/api/v1.0/webhook/check",
+    "port": null,
+    "protocol": "https:",
+    "query": null,
+    "search": null,
+    "slashes": true,
+  },
+}
+`;

@@ -20,7 +20,7 @@ var Riminder = /** @class */ (function () {
     }
     Riminder.prototype._init = function () {
         if (this.Webhooks_Key) {
-            this.webhooks = new webhooks_1.Webhooks(this.Webhooks_Key);
+            this.webhooks = new webhooks_1.Webhooks(this);
         }
         this.source = new source_1.default(this);
         this.filter = new filter_1.default(this);
