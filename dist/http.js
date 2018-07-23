@@ -18,7 +18,7 @@ exports.httpRequest = function (url, options) {
         .then(function (json) { return json.data; });
 };
 exports.httpPostRequest = function (url, data, file, options) {
-    var body = generateBody(data, file);
+    var body = data ? generateBody(data, file) : null;
     var opts = __assign({}, options, { method: "POST", body: body });
     return fetch(url, opts)
         .then(successHandler, errorHandler)

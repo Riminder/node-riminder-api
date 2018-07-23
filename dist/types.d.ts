@@ -153,3 +153,8 @@ export declare enum Seniority {
     SENIOR = "senior",
     JUNIOR = "junior"
 }
+export interface WebhooksResponse {
+    team_name: string;
+    webhook_id: string;
+    webhook_url: string;
+}
