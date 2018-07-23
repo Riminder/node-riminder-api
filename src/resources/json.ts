@@ -3,7 +3,7 @@ import defaults from "../defaults";
 import { DataUpload, TrainingMetadata, DataUploadCheck } from "../types";
 import { httpPostRequest } from "../http";
 
-export default class Data {
+export default class JSON {
   private riminder: Riminder;
 
   constructor(riminder: Riminder) {
@@ -12,13 +12,13 @@ export default class Data {
 
   add(data: DataUpload) {
     const transformedData = this._tranformTimestamp(data);
-    const url = `${defaults.API_URL}/profile/data`;
+    const url = `${defaults.API_URL}/profile/json`;
     return httpPostRequest(url, transformedData, null, { headers: this.riminder.headers });
   }
 
   check(data: DataUploadCheck) {
     const transformedData = this._tranformTimestamp(data);
-    const url = `${defaults.API_URL}/profile/data/check`;
+    const url = `${defaults.API_URL}/profile/json/check`;
     return httpPostRequest(url, transformedData, null, { headers: this.riminder.headers });
   }
 
