@@ -417,7 +417,7 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the post profile data endpoint", () => {
-        const data: DataUpload = {
+        const json: DataUpload = {
           source_id: "source_id",
           timestamp_reception: new Date("2018-01-01"),
           profile_json: {
@@ -448,7 +448,7 @@ describe("Wrapper test", () => {
           }
         };
 
-        app.profile.data.add(data).then((response: any) => {
+        app.profile.json.add(json).then((response: any) => {
           const responseWithoutBody = {
             url: response.url,
             options: {
@@ -461,7 +461,7 @@ describe("Wrapper test", () => {
       });
 
       test("It should call the check profile data endpoint", () => {
-        const data: DataUploadCheck = {
+        const json: DataUploadCheck = {
           timestamp_reception: new Date("2018-01-01"),
           profile_json: {
             name: "Pierre Jean",
@@ -491,7 +491,7 @@ describe("Wrapper test", () => {
           }
         };
 
-        app.profile.data.check(data).then((response: any) => {
+        app.profile.json.check(json).then((response: any) => {
           const responseWithoutBody = {
             url: response.url,
             options: {
