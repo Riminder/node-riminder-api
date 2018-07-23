@@ -1,6 +1,10 @@
+import Riminder = require("./index");
 import Events from "./events";
 import * as util from "tweetnacl-util";
 import * as sha256 from "fast-sha256";
+import { WebhooksResponse } from "./types";
+import defaults from "./defaults";
+import { httpPostRequest } from "./http";
 
 export namespace Webhooks {
   export interface ResponseBase {
@@ -41,15 +45,15 @@ export namespace Webhooks {
 }
 
 export class Webhooks {
-  private webhookSecretKey: string;
+  private riminder: Riminder;
   binding: Webhooks.EventCallbackMap;
 
-  constructor(secretKey: string) {
-    if (!secretKey) {
+  constructor(riminder: Riminder) {
+    if (!riminder  || !riminder.Webhooks_Key) {
       throw new Error("The webhook secret key must be specified");
     }
 
-    this.webhookSecretKey = secretKey;
+    this.riminder = riminder;
     this.binding = new Map<string, (data: Webhooks.Response, type: string) => any>();
   }
 
@@ -60,7 +64,7 @@ export class Webhooks {
       }
 
       const [encodedSignature, encodedPayload] = headers["HTTP-RIMINDER-SIGNATURE"].split(".");
-      const expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(this.webhookSecretKey), util.decodeUTF8(encodedPayload)));
+      const expectedSignature = util.encodeBase64(sha256.hmac(util.decodeUTF8(this.riminder.Webhooks_Key), util.decodeUTF8(encodedPayload)));
 
       if (encodedSignature !== expectedSignature) {
         throw new Error("The signature is invalid");
@@ -87,6 +91,11 @@ export class Webhooks {
     this.binding.set(event, callback);
 
     return this;
+  }
+
+  check(): Promise<WebhooksResponse> {
+    const url = `${defaults.API_URL}/webhook/check`;
+    return httpPostRequest(url, null, null, { headers: this.riminder.headers });
   }
 
   private _callBinding(payload: Webhooks.Response): void {
