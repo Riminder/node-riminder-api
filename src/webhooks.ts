@@ -29,7 +29,24 @@ export namespace Webhooks {
     filter: Filter;
   }
 
-  export type Response = ProfileParseResponse | ProfileScoreResponse | FilterTrainResponse | FilterScoreResponse;
+  export interface ActionStageResponse extends ResponseBase {
+    profile: Profile;
+    filter: Filter;
+    stage: string;
+  }
+
+  export interface ActionRatingResponse extends ResponseBase {
+    profile: Profile;
+    filter: Filter;
+    rating: number;
+  }
+
+  export type Response = ProfileParseResponse |
+    ProfileScoreResponse |
+    FilterTrainResponse |
+    FilterScoreResponse |
+    ActionRatingResponse |
+    ActionStageResponse;
 
   export interface Profile {
     profile_id: string;
