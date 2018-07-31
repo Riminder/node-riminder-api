@@ -490,7 +490,11 @@ const events = [
   "filter.train.error",
   "filter.score.start",
   "filter.score.success",
-  "filter.score.error"
+  "filter.score.error",
+  "action.stage.success",
+  "action.stage.error",
+  "action.rating.success",
+  "action.rating.error",
 ];
 ```
 

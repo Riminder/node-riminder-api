@@ -19,7 +19,17 @@ export declare namespace Webhooks {
     interface FilterScoreResponse extends ResponseBase {
         filter: Filter;
     }
-    type Response = ProfileParseResponse | ProfileScoreResponse | FilterTrainResponse | FilterScoreResponse;
+    interface ActionStageResponse extends ResponseBase {
+        profile: Profile;
+        filter: Filter;
+        stage: string;
+    }
+    interface ActionRatingResponse extends ResponseBase {
+        profile: Profile;
+        filter: Filter;
+        rating: number;
+    }
+    type Response = ProfileParseResponse | ProfileScoreResponse | FilterTrainResponse | FilterScoreResponse | ActionRatingResponse | ActionStageResponse;
     interface Profile {
         profile_id: string;
         profile_reference: string;

@@ -1,1 +1,1 @@
-{"version":3,"file":"events.js","sourceRoot":"","sources":["../src/events.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,uBAAuB;IACvB,qBAAqB;IACrB,uBAAuB;IACvB,qBAAqB;IACrB,oBAAoB;IACpB,sBAAsB;IACtB,oBAAoB;IACpB,oBAAoB;IACpB,sBAAsB;IACtB,oBAAoB;CACrB,CAAC"}
+{"version":3,"file":"events.js","sourceRoot":"","sources":["../src/events.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,uBAAuB;IACvB,qBAAqB;IACrB,uBAAuB;IACvB,qBAAqB;IACrB,oBAAoB;IACpB,sBAAsB;IACtB,oBAAoB;IACpB,oBAAoB;IACpB,sBAAsB;IACtB,oBAAoB;IACpB,sBAAsB;IACtB,oBAAoB;IACpB,uBAAuB;IACvB,qBAAqB;CACtB,CAAC"}
