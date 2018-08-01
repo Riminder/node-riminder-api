@@ -17,11 +17,11 @@ var JSON = /** @class */ (function () {
         return http_1.httpPostRequest(url, transformedData, null, { headers: this.riminder.headers });
     };
     JSON.prototype._tranformTimestamp = function (data) {
-        if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
-            data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
+        if (data.profile_json.timestamp_reception && typeof data.profile_json.timestamp_reception === "object") {
+            data.profile_json.timestamp_reception = Math.floor(data.profile_json.timestamp_reception.getTime() / 1000);
         }
         else {
-            data.timestamp_reception = Math.floor(data.timestamp_reception / 1000);
+            data.profile_json.timestamp_reception = Math.floor(data.profile_json.timestamp_reception / 1000);
         }
         if (data.training_metadata) {
             data.training_metadata.forEach(function (metadata) {
