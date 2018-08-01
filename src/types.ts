@@ -128,6 +128,9 @@ export interface Experience {
   end: string;
   title: string;
   company: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -137,6 +140,9 @@ export interface Education {
   end: string;
   title: string;
   school: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -144,24 +150,32 @@ export interface Education {
 export interface ProfileJSON {
   name: string;
   email: string;
-  address: string;
-  profileReference?: string;
+  summary: string;
+  timestamp_reception: number;
+  location_details: {
+    text: string;
+  };
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
+  interests: Array<string>;
+  urls: {
+    from_resume: Array<string>;
+    linkedin: string;
+    twitter: string;
+    facebook: string;
+    github: string;
+    picture: string;
+  };
 }
 
 export interface JsonUploadCheck {
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
-  training_metadata?: Array<TrainingMetadata>;
 }
 
 export enum Stage {
