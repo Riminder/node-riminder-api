@@ -171,14 +171,12 @@ export interface ProfileJSON {
 
 export interface JsonUploadCheck {
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
   training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
   training_metadata?: Array<TrainingMetadata>;
 }
 
