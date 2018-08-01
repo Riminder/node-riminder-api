@@ -23,10 +23,10 @@ export default class JSON {
   }
 
   private _tranformTimestamp(data: JsonUpload | JsonUploadCheck): JsonUpload | JsonUploadCheck {
-    if (data.timestamp_reception && typeof data.timestamp_reception === "object") {
-      data.timestamp_reception = Math.floor(data.timestamp_reception.getTime() / 1000);
+    if (data.profile_json.timestamp_reception && typeof data.profile_json.timestamp_reception === "object") {
+      data.profile_json.timestamp_reception = Math.floor(data.profile_json.timestamp_reception.getTime() / 1000);
     } else {
-      data.timestamp_reception = Math.floor(data.timestamp_reception as number / 1000);
+      data.profile_json.timestamp_reception = Math.floor(data.profile_json.timestamp_reception as number / 1000);
     }
     if (data.training_metadata) {
       data.training_metadata.forEach((metadata: TrainingMetadata) => {
