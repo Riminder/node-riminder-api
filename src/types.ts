@@ -151,7 +151,7 @@ export interface ProfileJSON {
   name: string;
   email: string;
   summary: string;
-  timestamp_reception: number;
+  timestamp_reception: Date | number;
   location_details: {
     text: string;
   };
