@@ -150,6 +150,7 @@ export interface Education {
 export interface ProfileJSON {
   name: string;
   email: string;
+  phone: string;
   summary: string;
   timestamp_reception: Date | number;
   location_details: {
