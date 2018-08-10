@@ -126,6 +126,7 @@ export interface ProfileJSON {
     experiences: Array<Experience>;
     educations: Array<Education>;
     skills: Array<string>;
+    languages: Array<string>;
     interests: Array<string>;
     urls: {
         from_resume: Array<string>;
@@ -143,6 +144,7 @@ export interface JsonUploadCheck {
 export interface JsonUpload {
     source_id: string;
     profile_json: ProfileJSON;
+    profile_reference?: string;
     training_metadata?: Array<TrainingMetadata>;
 }
 export declare enum Stage {
