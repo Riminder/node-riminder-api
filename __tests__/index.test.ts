@@ -6,6 +6,12 @@ import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, Rat
 
 let app: Riminder;
 
+/**
+ * @Readme: These tests are incomplete. We should also test the content of the request. It's currently testing
+ * only the endpoint and the query parameters given.
+ * @Todo: Add body check for each post/patch route
+ */
+
 function getQueryParamAsArray(query: string): Array<string> {
   return query
     .split("&")
