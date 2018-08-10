@@ -183,20 +183,34 @@ client.profile.get(options);
 Method that check if the structured profile is valid.
 
 ```typescript
+
 export interface JsonUploadCheck {
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
   training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface ProfileJSON {
   name: string;
   email: string;
-  address: string;
-  profileReference?: string;
+  phone: string;
+  summary: string;
+  timestamp_reception: Date | number;
+  location_details: {
+    text: string;
+  };
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
+  languages: Array<string>;
+  interests: Array<string>;
+  urls: {
+    from_resume: Array<string>;
+    linkedin: string;
+    twitter: string;
+    facebook: string;
+    github: string;
+    picture: string;
+  };
 }
 
 export interface Experience {
@@ -204,6 +218,9 @@ export interface Experience {
   end: string;
   title: string;
   company: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -213,6 +230,9 @@ export interface Education {
   end: string;
   title: string;
   school: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -228,39 +248,64 @@ export interface TrainingMetadata {
 
 ```typescript
 const data: JsonUploadCheck = {
-  timestamp_reception: new Date("2015-01-01"),
   profile_json: {
     name: "Marty McFly",
     email: "marty.mcfly@gmail.com",
-    address: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420",
-    profileReference: "marty",
-    educations: [{
-      start: "01/01/1985",
-      end: "01/01/1986",
-      title: "Hill Valley High School",
-      description: "a school",
-      location: "Hill Valley",
-      school: "Hill Valley High School"
-    }],
+    phone: "202-555-0141",
+    summary: "High school student, loves to time travel",
+    timestamp_reception: new Date("1985-10-21"),
+    location_details: {
+      text: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420"
+    },
     experiences: [{
       start: "01/01/2017",
       end: "01/01/2018",
       title: "CusCo employee",
-      description: "Fujitsu company",
+      company: "CusCo",
+      location_details: {
+        text: "Hill Valley"
+      },
       location: "Hill Valley",
-      company: "CusCo"
+      description: "Fujitsu company"
+    }],
+    educations: [{
+      start: "01/01/1985",
+      end: "01/01/1986",
+      title: "Hill Valley High School",
+      school: "Hill Valley High School",
+      location_details: {
+        text: "Hill Valley"
+      },
+      location: "Hill Valley",
+      description: "a school"
     }],
     skills: [
       "skate",
       "time travel"
-    ]
+    ],
+    languages: [
+      "english"
+    ],
+    interests: [
+      "music",
+    ],
+    urls: {
+      from_resume: [
+        "test.com"
+      ],
+      linkedin: "",
+      twitter: "",
+      facebook: "",
+      github: "",
+      picture: ""
+    }
   }
 };
 
 client.profile.json.check(options);
 ```
 
-#### riminder.profile.json.check
+#### riminder.profile.json.add
 
 Method that upload a structured profile to the platform.
 
@@ -268,18 +313,32 @@ Method that upload a structured profile to the platform.
 export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
-  timestamp_reception?: Date | number;
+  profile_reference?: string;
   training_metadata?: Array<TrainingMetadata>;
 }
 
 export interface ProfileJSON {
   name: string;
   email: string;
-  address: string;
-  profileReference?: string;
+  phone: string;
+  summary: string;
+  timestamp_reception: Date | number;
+  location_details: {
+    text: string;
+  };
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
+  languages: Array<string>;
+  interests: Array<string>;
+  urls: {
+    from_resume: Array<string>;
+    linkedin: string;
+    twitter: string;
+    facebook: string;
+    github: string;
+    picture: string;
+  };
 }
 
 export interface Experience {
@@ -287,6 +346,9 @@ export interface Experience {
   end: string;
   title: string;
   company: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -296,6 +358,9 @@ export interface Education {
   end: string;
   title: string;
   school: string;
+  location_details: {
+    text: string;
+  };
   location: string;
   description: string;
 }
@@ -310,34 +375,60 @@ export interface TrainingMetadata {
 ```
 
 ```typescript
-const data: JsonUploadCheck = {
+const data: JsonUpload = {
   source_id: "source_id",
-  timestamp_reception: new Date("2015-01-01"),
+  profile_reference: "macfly",
   profile_json: {
     name: "Marty McFly",
     email: "marty.mcfly@gmail.com",
-    address: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420",
-    profileReference: "marty",
-    educations: [{
-      start: "01/01/1985",
-      end: "01/01/1986",
-      title: "Hill Valley High School",
-      description: "a school",
-      location: "Hill Valley",
-      school: "Hill Valley High School"
-    }],
+    phone: "202-555-0141",
+    summary: "High school student, loves to time travel",
+    timestamp_reception: new Date("1985-10-21"),
+    location_details: {
+      text: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420"
+    },
     experiences: [{
       start: "01/01/2017",
       end: "01/01/2018",
       title: "CusCo employee",
-      description: "Fujitsu company",
+      company: "CusCo",
+      location_details: {
+        text: "Hill Valley"
+      },
       location: "Hill Valley",
-      company: "CusCo"
+      description: "Fujitsu company"
+    }],
+    educations: [{
+      start: "01/01/1985",
+      end: "01/01/1986",
+      title: "Hill Valley High School",
+      school: "Hill Valley High School",
+      location_details: {
+        text: "Hill Valley"
+      },
+      location: "Hill Valley",
+      description: "a school"
     }],
     skills: [
       "skate",
       "time travel"
-    ]
+    ],
+    languages: [
+      "english"
+    ],
+    interests: [
+      "music",
+    ],
+    urls: {
+      from_resume: [
+        "test.com"
+      ],
+      linkedin: "",
+      twitter: "",
+      facebook: "",
+      github: "",
+      picture: ""
+    }
   }
 };
 

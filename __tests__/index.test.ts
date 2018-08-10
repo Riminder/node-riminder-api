@@ -6,6 +6,12 @@ import { RiminderOptions, ProfilesOptions, ProfileUpload, StagePatch, Stage, Rat
 
 let app: Riminder;
 
+/**
+ * @Readme: These tests are incomplete. We should also test the content of the request. It's currently testing
+ * only the endpoint and the query parameters given.
+ * @Todo: Add body check for each post/patch route
+ */
+
 function getQueryParamAsArray(query: string): Array<string> {
   return query
     .split("&")
@@ -419,32 +425,58 @@ describe("Wrapper test", () => {
       test("It should call the post profile data endpoint", () => {
         const json: JsonUpload = {
           source_id: "source_id",
-          timestamp_reception: new Date("2018-01-01"),
+          profile_reference: "macfly",
           profile_json: {
-            profileReference: "ref",
-            address: "Paris",
-            name: "Pierre Jean",
-            email: "pierre.jean@test.com",
-            educations: [{
-              start: "01/01/2017",
-              end: "01/01/2018",
-              title: "school title",
-              description: "a school",
-              location: "Paris",
-              school: "Vauban"
-            }],
+            name: "Marty McFly",
+            email: "marty.mcfly@gmail.com",
+            phone: "202-555-0141",
+            summary: "High school student, loves to time travel",
+            timestamp_reception: new Date("1985-10-21"),
+            location_details: {
+              text: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420"
+            },
             experiences: [{
               start: "01/01/2017",
               end: "01/01/2018",
-              title: "experience title",
-              description: "a company",
-              location: "Paris",
-              company: "Comp"
+              title: "CusCo employee",
+              company: "CusCo",
+              location_details: {
+                text: "Hill Valley"
+              },
+              location: "Hill Valley",
+              description: "Fujitsu company"
+            }],
+            educations: [{
+              start: "01/01/1985",
+              end: "01/01/1986",
+              title: "Hill Valley High School",
+              school: "Hill Valley High School",
+              location_details: {
+                text: "Hill Valley"
+              },
+              location: "Hill Valley",
+              description: "a school"
             }],
             skills: [
-              "hard work",
-              "funny"
-            ]
+              "skate",
+              "time travel"
+            ],
+            languages: [
+              "english"
+            ],
+            interests: [
+              "music",
+            ],
+            urls: {
+              from_resume: [
+                "test.com"
+              ],
+              linkedin: "",
+              twitter: "",
+              facebook: "",
+              github: "",
+              picture: ""
+            }
           }
         };
 
@@ -462,32 +494,57 @@ describe("Wrapper test", () => {
 
       test("It should call the check profile data endpoint", () => {
         const json: JsonUploadCheck = {
-          timestamp_reception: new Date("2018-01-01"),
           profile_json: {
-            name: "Pierre Jean",
-            email: "pierre.jean@test.com",
-            profileReference: "ref",
-            address: "Paris",
-            educations: [{
-              start: "01/01/2017",
-              end: "01/01/2018",
-              title: "school title",
-              description: "a school",
-              location: "Paris",
-              school: "Vauban"
-            }],
+            name: "Marty McFly",
+            email: "marty.mcfly@gmail.com",
+            phone: "202-555-0141",
+            summary: "High school student, loves to time travel",
+            timestamp_reception: new Date("1985-10-21"),
+            location_details: {
+              text: "9303 Lyon Drive, Lyon Estates, Hill Valley CA 95420"
+            },
             experiences: [{
               start: "01/01/2017",
               end: "01/01/2018",
-              title: "experience title",
-              description: "a company",
-              location: "Paris",
-              company: "Comp"
+              title: "CusCo employee",
+              company: "CusCo",
+              location_details: {
+                text: "Hill Valley"
+              },
+              location: "Hill Valley",
+              description: "Fujitsu company"
+            }],
+            educations: [{
+              start: "01/01/1985",
+              end: "01/01/1986",
+              title: "Hill Valley High School",
+              school: "Hill Valley High School",
+              location_details: {
+                text: "Hill Valley"
+              },
+              location: "Hill Valley",
+              description: "a school"
             }],
             skills: [
-              "hard work",
-              "funny"
-            ]
+              "skate",
+              "time travel"
+            ],
+            languages: [
+              "english"
+            ],
+            interests: [
+              "music",
+            ],
+            urls: {
+              from_resume: [
+                "test.com"
+              ],
+              linkedin: "",
+              twitter: "",
+              facebook: "",
+              github: "",
+              picture: ""
+            }
           }
         };
 
