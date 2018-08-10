@@ -194,13 +194,14 @@ export interface ProfileJSON {
   email: string;
   phone: string;
   summary: string;
-  timestamp_reception: number;
+  timestamp_reception: Date | number;
   location_details: {
     text: string;
   };
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
+  languages: Array<string>;
   interests: Array<string>;
   urls: {
     from_resume: Array<string>;
@@ -282,6 +283,9 @@ const data: JsonUploadCheck = {
       "skate",
       "time travel"
     ],
+    languages: [
+      "english"
+    ],
     interests: [
       "music",
     ],
@@ -309,6 +313,7 @@ Method that upload a structured profile to the platform.
 export interface JsonUpload {
   source_id: string;
   profile_json: ProfileJSON;
+  profile_reference?: string;
   training_metadata?: Array<TrainingMetadata>;
 }
 
@@ -317,13 +322,14 @@ export interface ProfileJSON {
   email: string;
   phone: string;
   summary: string;
-  timestamp_reception: number;
+  timestamp_reception: Date | number;
   location_details: {
     text: string;
   };
   experiences: Array<Experience>;
   educations: Array<Education>;
   skills: Array<string>;
+  languages: Array<string>;
   interests: Array<string>;
   urls: {
     from_resume: Array<string>;
@@ -371,6 +377,7 @@ export interface TrainingMetadata {
 ```typescript
 const data: JsonUpload = {
   source_id: "source_id",
+  profile_reference: "macfly",
   profile_json: {
     name: "Marty McFly",
     email: "marty.mcfly@gmail.com",
@@ -405,6 +412,9 @@ const data: JsonUpload = {
     skills: [
       "skate",
       "time travel"
+    ],
+    languages: [
+      "english"
     ],
     interests: [
       "music",

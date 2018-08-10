@@ -419,6 +419,7 @@ describe("Wrapper test", () => {
       test("It should call the post profile data endpoint", () => {
         const json: JsonUpload = {
           source_id: "source_id",
+          profile_reference: "macfly",
           profile_json: {
             name: "Marty McFly",
             email: "marty.mcfly@gmail.com",
@@ -453,6 +454,9 @@ describe("Wrapper test", () => {
             skills: [
               "skate",
               "time travel"
+            ],
+            languages: [
+              "english"
             ],
             interests: [
               "music",
@@ -518,6 +522,9 @@ describe("Wrapper test", () => {
             skills: [
               "skate",
               "time travel"
+            ],
+            languages: [
+              "english"
             ],
             interests: [
               "music",
