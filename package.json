@@ -1,6 +1,6 @@
 {
   "name": "riminder",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Node wrapper SDK for Riminder.Net API",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -27,7 +27,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^8.0.0",
     "browserify": "^16.2.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-tslint": "^8.1.3",
     "gulp-typescript": "^4.0.2",
     "jest": "^23.1.0",
