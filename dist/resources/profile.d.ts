@@ -8,6 +8,7 @@ import Scoring from "./scoring";
 import Stage from "./stage";
 import Rating from "./rating";
 import JSON from "./json";
+import Reveal from "./reveal"
 export default class Profile {
     private riminder;
     document: Document;
@@ -16,6 +17,7 @@ export default class Profile {
     stage: Stage;
     rating: Rating;
     json: JSON;
+    reveal: Reveal;
     constructor(riminder: Riminder);
     get(options: ProfileOptionIdOrReference): Promise<any>;
     list(options: ProfilesOptions): Promise<any>;

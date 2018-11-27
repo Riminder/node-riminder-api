@@ -9,6 +9,7 @@ var scoring_1 = require("./scoring");
 var stage_1 = require("./stage");
 var rating_1 = require("./rating");
 var json_1 = require("./json");
+var reveal_1 = require("./reveal");
 var Profile = /** @class */ (function () {
     function Profile(riminder) {
         this.riminder = riminder;
@@ -18,6 +19,7 @@ var Profile = /** @class */ (function () {
         this.stage = new stage_1.default(this.riminder);
         this.rating = new rating_1.default(this.riminder);
         this.json = new json_1.default(this.riminder);
+        this.reveal = new reveal_1.default(this.riminder)
     }
     Profile.prototype.get = function (options) {
         var urlParams = utils_1.generateURLParams(options);

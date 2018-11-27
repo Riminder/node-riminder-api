@@ -10,6 +10,7 @@ import Scoring from "./scoring";
 import Stage from "./stage";
 import Rating from "./rating";
 import JSON from "./json";
+import Reveal from "./reveal";
 
 export default class Profile {
   private riminder: Riminder;
@@ -19,6 +20,7 @@ export default class Profile {
   stage: Stage;
   rating: Rating;
   json: JSON;
+  reveal: Reveal;
 
   constructor(riminder: Riminder) {
     this.riminder = riminder;
@@ -28,6 +30,7 @@ export default class Profile {
     this.stage = new Stage(this.riminder);
     this.rating = new Rating(this.riminder);
     this.json = new JSON(this.riminder);
+    this.reveal = new Reveal(this.riminder);
   }
 
   get(options: ProfileOptionIdOrReference) {
