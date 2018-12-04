@@ -50,7 +50,6 @@ export default class Profile {
       options.date_start = Math.floor(options.date_start as number / 1000);
     }
     const urlParams = generateURLParams(options);
-    process.stdout.write(`${defaults.API_URL}/profiles?${urlParams}`);
 
     return httpRequest(`${defaults.API_URL}/profiles?${urlParams}`, { headers: this.riminder.headers });
   }
@@ -76,7 +75,6 @@ export default class Profile {
       });
     }
     const url = `${defaults.API_URL}/profile`;
-    process.stdout.write(url);
     return httpPostRequest(url, data, file, { headers: this.riminder.headers });
   }
 }
