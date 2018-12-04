@@ -6,3 +6,6 @@ temp
 
 # Jest coverage report
 coverage/
+
+# dist should not be pushed
+dist/

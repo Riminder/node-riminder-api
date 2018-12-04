@@ -5,6 +5,7 @@
 
 ```bash
 npm install --save riminder
+npm run build
 ```
 
 # Usage
@@ -20,7 +21,7 @@ const client = new Riminder({API_Key: "Your API Key"});
 
 Class constructor for your client instance, it should be called with an `options` object where you define your `API_Key`.
 
-> **Note:** All methods return a Promise when called.
+> **Note:** All methods return a Promise when called. All promises can throw exceptions so you should catch them at the end of your promise.
 
 ## Source
 
@@ -484,6 +485,26 @@ const options: ProfileOptionIdOrReference = {
 }
 
 client.profile.scoring.list(options);
+```
+
+### Revealing
+
+#### riminder.profile.revealing.get
+
+Method that reveals the interpretability result of a profile (by id or reference) with a filter (by id or reference).
+
+```typescript
+const options: ProfileOptionIdOrReference = {
+    source_id: "source_id",
+    profile_id: "id",
+    // Or
+    profile_reference: "reference",
+    filter_id: "id",
+    // Or
+    filter_reference: "reference"
+}
+
+client.profile.revealing.get(options);
 ```
 
 ### Staging
