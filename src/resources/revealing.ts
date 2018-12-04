@@ -4,14 +4,14 @@ import { generateURLParams } from "../utils";
 import { ProfileOptionIdOrReference } from "../types";
 import { httpRequest } from "../http";
 
-export default class Reveal {
+export default class Revealing {
   private riminder: Riminder;
   constructor(riminder: Riminder) {
     this.riminder = riminder;
   }
 
-  list(options: ProfileOptionIdOrReference) {
+  get(options: ProfileOptionIdOrReference) {
     const urlParams = generateURLParams(options);
-    return httpRequest(`${defaults.API_URL}/profile/interpretability?${urlParams}`, { headers: this.riminder.headers });
+    return httpRequest(`${defaults.API_URL}/profile/revealing?${urlParams}`, { headers: this.riminder.headers });
   }
 }

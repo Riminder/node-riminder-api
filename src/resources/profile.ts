@@ -10,7 +10,7 @@ import Scoring from "./scoring";
 import Stage from "./stage";
 import Rating from "./rating";
 import JSON from "./json";
-import Reveal from "./reveal";
+import Revealing from "./revealing";
 
 export default class Profile {
   private riminder: Riminder;
@@ -20,7 +20,7 @@ export default class Profile {
   stage: Stage;
   rating: Rating;
   json: JSON;
-  reveal: Reveal;
+  revealing: Revealing;
 
   constructor(riminder: Riminder) {
     this.riminder = riminder;
@@ -30,7 +30,7 @@ export default class Profile {
     this.stage = new Stage(this.riminder);
     this.rating = new Rating(this.riminder);
     this.json = new JSON(this.riminder);
-    this.reveal = new Reveal(this.riminder);
+    this.revealing = new Revealing(this.riminder);
   }
 
   get(options: ProfileOptionIdOrReference) {
@@ -50,6 +50,8 @@ export default class Profile {
       options.date_start = Math.floor(options.date_start as number / 1000);
     }
     const urlParams = generateURLParams(options);
+    process.stdout.write(`${defaults.API_URL}/profiles?${urlParams}`);
+
     return httpRequest(`${defaults.API_URL}/profiles?${urlParams}`, { headers: this.riminder.headers });
   }
 
@@ -74,6 +76,7 @@ export default class Profile {
       });
     }
     const url = `${defaults.API_URL}/profile`;
+    process.stdout.write(url);
     return httpPostRequest(url, data, file, { headers: this.riminder.headers });
   }
 }
